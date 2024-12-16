@@ -1,3 +1,5 @@
+@import "variable";
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -32,8 +34,8 @@ body {
 
   .menu-page-title-border {
     width:78vw;
-    height:2px;
-    background-color: black;
+    height:3px;
+    background-color: $primaryColor;
     p {
       font-size: clamp(.9rem, 4vw, 1.1rem);
       margin-top:2vh;
@@ -95,14 +97,45 @@ body {
       right:3vw;
       padding: 1.5vh 3.3vh;
       border-radius: 8px;
-      background-color: rgb(48, 48, 48);
+      background-color: $primaryColor;
       color: white;
       &:active {
         cursor: pointer;
-        background-color: rgb(26, 26, 26);
+        background-color: $activeColor;
       }
     }
     }
   }
   }
+}
+
+#cart-container {
+  z-index:2;
+  position: fixed;
+  bottom:0;
+  background-color: $primaryColor;
+  height:9vh;
+  width:100%;
+  color:white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px -2px 15px rgba(0, 0, 0, 0.034);
+  &:active {
+    background-color: $activeColor;
+  }
+  h2 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  #cart-items {
+    position: absolute;
+    font-weight: 600;
+    right:10vw;
+    font-size: 1.7rem;
+  }
+
 }

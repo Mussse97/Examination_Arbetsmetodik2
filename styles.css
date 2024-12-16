@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+#menu-main {
+  background-color: rgb(236, 236, 236);
+}
+
+#menu-page-title {
+  text-align: center;
+  width: 100%;
+  position: relative;
+  top: 3vh;
+  height: 25vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+#menu-page-title h2 {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  letter-spacing: 6px;
+  margin-bottom: 1.8vh;
+}
+#menu-page-title .menu-page-title-border {
+  width: 78vw;
+  height: 3px;
+  background-color: #45C861;
+}
+#menu-page-title .menu-page-title-border p {
+  font-size: clamp(0.9rem, 4vw, 1.1rem);
+  margin-top: 2vh;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#menu-card-container {
+  display: flex;
+  flex-direction: column;
+}
+#menu-card-container .menu-card-first {
+  border-top: 1px solid rgba(0, 0, 0, 0.637);
+}
+#menu-card-container .menu-card {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.43);
+  background-color: white;
+  padding: 2.2vh;
+}
+#menu-card-container .menu-card .menu-image {
+  width: 150px;
+  height: 120px;
+  align-self: center;
+  border-radius: 5px;
+}
+#menu-card-container .menu-card .menu-info-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1vh 0.5vh 1vh 4vh;
+  gap: 1vh;
+}
+#menu-card-container .menu-card .menu-info-container .menu-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+#menu-card-container .menu-card .menu-info-container .menu-desc {
+  font-size: 0.9rem;
+  width: 80%;
+}
+#menu-card-container .menu-card .menu-info-container .menu-price {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#menu-card-container .menu-card .menu-info-container .menu-price .menu-add-item {
+  font-size: 1rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 3vw;
+  padding: 1.5vh 3.3vh;
+  border-radius: 8px;
+  background-color: #45C861;
+  color: white;
+}
+#menu-card-container .menu-card .menu-info-container .menu-price .menu-add-item:active {
+  cursor: pointer;
+  background-color: #2b9f3e;
+}
+
+#cart-container {
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  background-color: #45C861;
+  height: 9vh;
+  width: 100%;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px -2px 15px rgba(0, 0, 0, 0.034);
+}
+#cart-container:active {
+  background-color: #2b9f3e;
+}
+#cart-container h2 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+#cart-container #cart-items {
+  position: absolute;
+  font-weight: 600;
+  right: 10vw;
+  font-size: 1.7rem;
+}
+
+/*# sourceMappingURL=styles.css.map */

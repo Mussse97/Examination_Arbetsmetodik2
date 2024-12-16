@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="stylesSass.css" />
   </head>
   <body>
+
+
     <!-- Menu title -->
     <main id="menu-main">
       <article id="menu-page-title">
@@ -15,11 +17,31 @@
           <p>Välj bland fantastiska rätter</p>
         </span>
       </article>
+  <!-- Food Menu container -->
+  <article id="menu-card-container"></article>
+  <br />
+  <br />
+  <br />
 
-      <!-- Food Menu container -->
-      <article id="menu-card-container"></article>
-      <!-- Adds some blank space at the end -->
-      <br />
+
+      <article id="menu"></article>
+
+      <button id="order-button" onclick="viewCart()">Se din order (0)</button>
+  
+
+      
+      <section id="cart-container">
+        <h2>Din Order</h2>
+        <section id="cart-items">0</section>
+        <p id="total-price"></p>
+      </section>
+      <input type="number" id="table-number" placeholder="Ange bordsnummer">
+        <button onclick="placeOrder()">Beställ</button>
+  
+
+
+
+
     </main>
 
     <script src="db.js"></script>
