@@ -1,4 +1,5 @@
 const menuContainer = document.getElementById("menu-card-container");
+// Change Menu list here
 const items = db.bbqs.slice(0, 5);
 
 items.forEach((item, index) => {
