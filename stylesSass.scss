@@ -127,7 +127,7 @@ body {
   }
   h2 {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
@@ -141,18 +141,20 @@ body {
 
 
 #your-order-overlay {
+  overflow: scroll;
   z-index:3;
   background-color: rgb(22, 22, 22);
   width:100%;
   height:60vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     position: fixed;
     bottom:0;
     display:none;
+    padding-top: 10vh;
 
     @keyframes yourOrderLowerAnimation{
       0% {bottom:-65vh;}
@@ -175,6 +177,43 @@ body {
       }
     }
 
+
+
+
+    #menu-item-preview-lower {
+      border-bottom:1px solid white;
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+      width:70%;
+      color:white;
+      position: relative;
+      padding:2vh 0vh;
+      opacity: 0%;
+      animation:fadeInLowerMenuItem .4s forwards;
+      animation-delay: .5s;
+      @keyframes fadeInLowerMenuItem {
+        0% {opacity:0%;}
+        100% {opacity:100%;}
+      }
+    }
+    #menu-item-preview-title {
+      display:flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: left;
+      #menu-item-preview-price {
+        margin-top:.8vh;
+        font-size:1.1rem;
+      }
+      #menu-item-preview-quanity {
+        align-self: flex-end;
+      }
+    }
+
+
+
   .total-price-text {
     color:$primaryColor;
     font-size: 2rem;
@@ -186,8 +225,8 @@ body {
     font-size: 2rem;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-top: 12vh;
-    margin-bottom: 4vh;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
   }  
 #table-number {
   text-align: center;
@@ -199,6 +238,8 @@ body {
 }
 #table-number[placeholder] {
  font-size: 1.2rem;
+ margin-bottom:7vh;
+
  &:focus {
   color:rgb(238, 238, 238);
  }
@@ -206,7 +247,8 @@ body {
 #error-message {
   color: rgb(212, 97, 97);
   position: relative;
-  top:1vh;
+  font-size: 1rem;
+  top:-5.7vh;
   display:none;
 }
 
@@ -217,8 +259,8 @@ body {
     letter-spacing: 1px;
     background: none;
     border: none;
-    position: absolute;
     bottom:5vh;
+    margin-bottom:3vh;
     width:80vw;
     padding: 1.7vh 3.3vh;
     border-radius: 15px;
@@ -229,4 +271,6 @@ body {
       background-color: $activeColor;
     }
 }
+
 }
+
