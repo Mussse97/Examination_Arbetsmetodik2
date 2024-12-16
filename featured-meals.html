@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taverna</title>
+  <link rel="stylesheet" href="scss/main.css">
+</head>
+<body>
+  <!-- Introduktionstext -->
+  <section id="intro">
+    <p>
+      Varje dag erbjuder vi en speciellt utvald rätt som serveras med gratis dryck till måltiden. 
+      <br><br><strong>99 kr</strong> mån-tors och <strong>149 kr</strong> fre-sön. 
+      <br><br>Ta chansen att njuta av god mat till ett riktigt bra pris!
+    </p>
+  </section>
+
+  <!-- Featured Section -->
+  <section id="featured-meal" aria-labelledby="featured-title">
+    <h2 id="featured-title">Dagens Måltid</h2>
+    <div id="meal-container">
+      <!-- Dynamisk måltid kommer att visas här -->
+    </div>
+  </section>
+
+  <!-- Statisk veckomeny -->
+  <section id="weekly-menu" aria-labelledby="weekly-menu-title">
+    <h2 id="weekly-menu-title">Veckans Måltider</h2>
+    <ul>
+      <li><strong>Måndag:</strong> Gramercy Tavern</li>
+      <li><strong>Tisdag:</strong> Shake Shack - 8 Pack</li>
+      <li><strong>Onsdag:</strong> Gott's Roadside</li>
+      <li><strong>Torsdag:</strong> Emmy Squared</li>
+      <li><strong>Fredag:</strong> Shake Shack - 16 Pack</li>
+      <li><strong>Lördag:</strong> Westholme Wagyu</li>
+      <li><strong>Söndag:</strong> Peter Luger Steak House</li>
+    </ul>
+  </section>
+
+  <!-- Länkar till JavaScript-filen -->
+  <script type="module" src="featured-meal.js"></script>
+</body>
+</html>

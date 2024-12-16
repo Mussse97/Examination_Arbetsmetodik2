@@ -1,0 +1,166 @@
+@import 'variables.scss';
+
+// Grundinställningar för mobil
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: $menuBackgroundColor; // Ljusgrå bakgrund
+  color: #000; // Svart text
+}
+
+// Huvudsektion: Dagens Måltid
+#featured-meal {
+  background-color: $itemColor; // Vit bakgrund för att sticka ut
+  margin: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 8px;
+  }
+
+  h2 {
+    margin-bottom: 15px; // Skapa avstånd mellan rubrik och kort
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $primaryColor; // Grön färg för rubriken
+  }
+
+  p {
+    margin-top: 15px;     // Avstånd ovanför eller under kortet
+    font-size: 1rem;
+    color: darken($menuBackgroundColor, 30%); // Använder bakgrundsfärg för tonad effekt
+  }
+
+  .price {
+    font-weight: bold;
+    color: $primaryColor; // Grön för pris
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  button {
+    background-color: $primaryColor;
+    color: $itemColor;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $activeColor; // Mörkare grön
+    }
+  }
+}
+
+// Menylista – för mobilskärm
+.menu-container {
+  padding: 10px;
+
+  .menu-item {
+    display: flex;
+    flex-direction: column; // Anpassad för små skärmar
+    align-items: center;
+    background-color: $itemColor;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 8px;
+      border-radius: 5px;
+      background-color: lighten($menuBackgroundColor, 10%);
+    }
+
+    .item-details {
+      text-align: center;
+
+      h3 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: darken($menuBackgroundColor, 30%);
+      }
+    }
+
+    .price {
+      font-weight: bold;
+      color: $primaryColor;
+      margin-top: 5px;
+    }
+  }
+}
+
+// Centrering för introduktionstext och veckomeny
+#intro, #weekly-menu {
+  display: flex;               // Använder flexbox
+  flex-direction: column;      // Staplar innehållet vertikalt
+  align-items: center;         // Centrerar horisontellt
+  justify-content: center;     // Centrerar vertikalt om nödvändigt
+  text-align: center;          // Centrerar texten inuti sektionen
+  margin: 20px 10px;           // Skapar lite utrymme runt sektionen
+  padding: 15px;               // Lägger till inre marginal
+  background-color: $menuBackgroundColor; // Ljus bakgrundsfärg   // Ljus bakgrundsfärg (valfritt)
+
+  h2 {
+    margin-bottom: 10px;       // Avstånd under rubriken
+    font-size: 1.6rem;
+    color: $primaryColor; // Grön färg för rubrik
+  }
+
+  p, ul {
+    font-size: 1rem;
+    color: #555;               // Grå textfärg
+    line-height: 1.5;          // Förbättrad läsbarhet
+  }
+
+  ul {
+    list-style: none;          // Tar bort punktlistor
+    padding: 0;
+
+    li {
+      margin: 5px 0;           // Skapar mellanrum mellan listpunkterna
+      font-weight: bold;
+    }
+  }
+}
+
+// Footer (Läs in fler rätter)
+footer {
+  text-align: center;
+  margin: 20px 0;
+
+  a {
+    color: $primaryColor;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      color: $activeColor;
+      text-decoration: underline;
+    }
+  }
+}
