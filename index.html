@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Taverna</title>
 </head>
 <body>
+
+
     
+
+
+<section class="rating" id="rating">
+    <h1 class="rateH1">Tack för att du har ätit hos oss!</h1>
+    <p class="rateP">Lämna gärna ett omdöme</p>
+
+    <div class="foodRate" id="foodRate">
+        <p class="food">Maten</p>
+        <span class="stars" data-value="1">☆</span>
+        <span class="stars" data-value="2">☆</span>
+        <span class="stars" data-value="3">☆</span>
+        <span class="stars" data-value="4">☆</span>
+        <span class="stars" data-value="5">☆</span>
+    </div>
+
+    <div class="restRate" id="restRate">
+        <p class="rest">Restaurangen</p>
+        <span class="stars" data-value="1">☆</span>
+        <span class="stars" data-value="2">☆</span>
+        <span class="stars" data-value="3">☆</span>
+        <span class="stars" data-value="4">☆</span>
+        <span class="stars" data-value="5">☆</span>
+    </div>
+
+    <div class="commentBox">
+        <input type="text" placeholder="Skriv här" class="writeComment">
+        <button class="submitButton" id="submitButton">Submit</button>
+    </div>
+</section>
+
+
+    <script src="db.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
