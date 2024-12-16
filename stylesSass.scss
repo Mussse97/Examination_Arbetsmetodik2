@@ -137,5 +137,96 @@ body {
     right:10vw;
     font-size: 1.7rem;
   }
+}
 
+
+#your-order-overlay {
+  z-index:3;
+  background-color: rgb(22, 22, 22);
+  width:100%;
+  height:60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    bottom:0;
+    display:none;
+
+    @keyframes yourOrderLowerAnimation{
+      0% {bottom:-65vh;}
+      100% {bottom:0vh;}
+    }
+    @keyframes yourOrderLowerCloseAnimation{
+      0% {bottom:0vh;}
+      100% {bottom:-65vh;}
+    }
+  
+    #close-your-order-overlay {
+      color:white;
+      font-size: 2.2rem;
+      font-weight: 500;
+      position: absolute;
+      right:2vh;
+      top:.5vh;
+      &:active {
+        color:grey;
+      }
+    }
+
+  .total-price-text {
+    color:$primaryColor;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 2vh;
+  }  
+  #total-price {
+    color:white;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 12vh;
+    margin-bottom: 4vh;
+  }  
+#table-number {
+  text-align: center;
+  padding:1.5vh;
+  width:60vw;
+  border-radius: 10px;
+  border:none;
+  background-color: rgba(128, 128, 128, 0.272);
+}
+#table-number[placeholder] {
+ font-size: 1.2rem;
+ &:focus {
+  color:rgb(238, 238, 238);
+ }
+}
+#error-message {
+  color: rgb(212, 97, 97);
+  position: relative;
+  top:1vh;
+  display:none;
+}
+
+
+  #your-order-button {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: none;
+    border: none;
+    position: absolute;
+    bottom:5vh;
+    width:80vw;
+    padding: 1.7vh 3.3vh;
+    border-radius: 15px;
+    background-color: $primaryColor;
+    color: white;
+    &:active {
+      cursor: pointer;
+      background-color: $activeColor;
+    }
+}
 }

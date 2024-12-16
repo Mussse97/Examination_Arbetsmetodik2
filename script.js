@@ -51,3 +51,55 @@ items.forEach((item, index) => {
   article.appendChild(infoContainer);
   menuContainer.appendChild(article);
 });
+
+
+
+
+
+// "Se din order" 
+let menuLowerOrderButton = document.getElementById("cart-container");
+let showLowerOrder  = document.getElementById("your-order-overlay");
+let closeLowerOrder  = document.getElementById("close-your-order-overlay");
+
+menuLowerOrderButton.addEventListener("click", ()=> {
+  showLowerOrder.style.display ="flex";
+  showLowerOrder.style.animation = "yourOrderLowerAnimation 1s forwards";
+})
+
+closeLowerOrder.addEventListener("click", ()=> {
+  showLowerOrder.style.animation = "yourOrderLowerCloseAnimation 1s forwards";
+  setTimeout(() => {
+    showLowerOrder.style.display ="none";
+    errorMessage.style.display="none";
+  }, "1000")
+})
+
+
+
+const tableNumberInput = document.getElementById("table-number");
+const errorMessage = document.getElementById("error-message");
+const submitLowerOrder = document.getElementById("your-order-button");
+
+
+  submitLowerOrder.addEventListener("click", function () {
+    const value = tableNumberInput.value.trim();
+    const min = parseInt(tableNumberInput.min);
+    const max = parseInt(tableNumberInput.max);
+  
+    if (value === "") {
+      tableNumberInput.value = null;
+      errorMessage.style.display = "block";
+      errorMessage.textContent = "Ange ett giltigt bordsnummer.";
+    } else if (parseInt(value) < min || parseInt(value) > max) {
+      tableNumberInput.value = null;
+      errorMessage.style.display = "block";
+      errorMessage.textContent = "Ange ett giltigt bordsnummer.";
+    } else {
+      errorMessage.style.display = "none";
+    }
+  });
+
+
+
+
+

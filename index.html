@@ -24,19 +24,28 @@
   <br />
 
 
-      <article id="menu"></article>
 
-      <button id="order-button" onclick="viewCart()">Se din order (0)</button>
+  <article id="menu"></article>
+  <button id="order-button" onclick="viewCart()">Se din order (0)</button>
   
+      <article id="your-order-overlay">
+        <article id="close-your-order-overlay">x</article>
+        <p id="total-price">
+          <span class="total-price-text">Totalt: </span>
+          359 kr</p>
+      <input type="number" min="1" max="20" id="table-number" placeholder="Ange bordsnummer" >
+          <p id="error-message">Ange ett giltigt bordsnummer</p>
 
+      <button id="your-order-button" onclick="placeOrder()">Beställ</button>
       
+      </article>
+
+  
       <section id="cart-container">
-        <h2>Din Order</h2>
+        <h2>Se Din Order</h2>
         <section id="cart-items">0</section>
-        <p id="total-price"></p>
       </section>
-      <input type="number" id="table-number" placeholder="Ange bordsnummer">
-        <button onclick="placeOrder()">Beställ</button>
+
   
 
 
