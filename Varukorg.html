@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurang Meny</title>
   <link rel="stylesheet" href="style.css">
-  <script src="db.js"></script> 
   <script defer src="varukorg.js"></script>
 </head>
 <body>
@@ -29,6 +28,7 @@
 
   
   <section id="menu-container"></section>
+  <!-- Space mellan sista item och "se din order" fältet -->
     <br><br><br><br>  
  
   <footer>
@@ -44,15 +44,19 @@
       <span>DIN ORDER</span>
       <button class="close-btn" onclick="closeCart()">×</button>
     </div>
+   
     <div class="cart-content" id="cartContent">
      
     </div>
     <div class="cart-footer">
-      <div class="total" id="totalAmount">TOTAL BELOPP: 0 KR</div>
-      <label for="table-number">BORDSNUMMER</label>
-      <input type="number" id="table-number" placeholder="Ange ditt bordsnummer" />
-      <button onclick="placeOrder()">BESTÄLL</button>
+      <div class="total" id="totalAmount">
+       </div>
+      <label for="table-number"></label>
+      <input type="number" min="1" max="16" id="table-number" placeholder="Ange ditt bordsnummer" />
+      <p id="error-message">Ange ett giltigt bordsnummer</p>
+      <button id="your-order-button"  onclick="placeOrder()">BESTÄLL</button>
     </div>
+  
   </article>
 
 </body>

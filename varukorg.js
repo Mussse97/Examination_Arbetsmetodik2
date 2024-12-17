@@ -73,33 +73,47 @@ const menuContainer = document.getElementById("menu-container");
 const orderCount = document.getElementById("order-count");
 
 
+//William har ändrat med div nestings och lagt till klasser.
 function displayMenu() {
-  const burgers = selectedMeals.slice(0, 10); 
-  burgers.forEach((burger) => {
+  const burgers = selectedMeals.slice(0, 7); 
+  burgers.forEach((burger, index) => {
     const card = document.createElement("div");
     card.classList.add("menu-card");
-    card.innerHTML = `
-      <img src="${burger.img}" alt="${burger.name}">
-      <div class="menu-info">
-        <h3>${burger.name}</h3>
-        <p>${burger.dsc}</p>
-        <span class="menu-price">${burger.price} kr</span>
-      </div>
-      <button onclick="addToCart('${burger.id}')">Lägg till</button>
-    `;
+       if (index === 0) {
+          card.classList.add("menu-card-first");
+        }
+      card.innerHTML = `
+        <img class="menu-image" src="${burger.img}" alt="${burger.name}">
+        <div class="menu-info">
+          <h3>${burger.name}</h3>
+          <p>${burger.dsc}</p>
+          <div class="menu-price">${burger.price} kr
+<button class="menu-add-item" onclick="addToCart('${burger.id}', this)">Lägg till</button>
+    </div>
+        </div>
+        `;
+    
     menuContainer.appendChild(card);
   });
 }
 
 
-function addToCart(itemId) {
+function addToCart(itemId, button) {
   const item = selectedMeals.find((burger) => burger.id === itemId);
   const existingItem = cart.find((cartItem) => cartItem.id === itemId);
+  
 
   if (existingItem) {
     existingItem.quantity++;
+
+    
   } else {
     cart.push({ ...item, quantity: 1 });
+
+     // William - "lägg till" knappen ändras när man trycker på den
+    //  button.classList.add("menu-add-item-choose");
+
+    
   }
   updateOrderButton();
 }
@@ -108,6 +122,7 @@ function addToCart(itemId) {
 function updateOrderButton() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   orderCount.innerText = totalItems;
+  
 }
 
 
@@ -134,7 +149,7 @@ function viewCart() {
     updateCartView() 
   });
   
-  totalPriceContainer.innerText = `Total: ${total} kr`;
+  totalPriceContainer.innerText = `${total} kr`;
   overlay.style.display = "flex";
   
 }
@@ -158,7 +173,7 @@ function placeOrder() {
   const tableNumber = document.getElementById("table-number").value;
   tableNumber.value = "";
   if (!tableNumber) {
-    alert("Ange bordsnummer!");
+    errorMessage();
     return;
   }
   alert(`Order skickad för bord ${tableNumber}!`);
@@ -210,6 +225,38 @@ function updateCartView() {
     cartContent.appendChild(cartItem);
     
   });
-  totalAmount.innerText = `TOTAL BELOPP: ${total} KR`;
+  totalAmount.innerHTML = `
+  <span class="total-price-text"> TOTALT: </span>  
+   <span id="total-price"> ${total} kr  </span>`;
 }
 
+
+
+
+// Ange bordsnummer ERROR
+function errorMessage(){
+
+const tableNumberInput = document.getElementById("table-number");
+const errorMessage = document.getElementById("error-message");
+const submitLowerOrder = document.getElementById("your-order-button");
+
+  submitLowerOrder.addEventListener("click", function () {
+    const value = tableNumberInput.value.trim();
+    const min = parseInt(tableNumberInput.min);
+    const max = parseInt(tableNumberInput.max);
+  
+    if (value === "") {
+      tableNumberInput.value = null;
+      errorMessage.style.display = "block";
+      errorMessage.textContent = "Ange ett giltigt bordsnummer.";
+    } else if (parseInt(value) < min || parseInt(value) > max) {
+      tableNumberInput.value = null;
+      errorMessage.style.display = "block";
+      errorMessage.textContent = "Ange ett giltigt bordsnummer.";
+    } else {
+      errorMessage.style.display = "none";
+    }
+  });
+ 
+}
+errorMessage();
