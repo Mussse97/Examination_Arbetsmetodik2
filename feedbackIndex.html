@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taverna</title>
+</head>
+<body>
+    
+<!-- feedback/recension feature -->
+<section class="rating" id="rating">
+    <h1 class="rateH1">Tack för att du har ätit hos oss!</h1>
+    <p class="rateP">Lämna gärna ett omdöme</p>
+
+    <div class="foodRate" id="foodRate">
+        <p class="food">Var maten i ditt tycke?</p>
+        <span class="stars" data-value="1">&#128970;</span>
+        <span class="stars" data-value="2">&#128970;</span>
+        <span class="stars" data-value="3">&#128970;</span>
+        <span class="stars" data-value="4">&#128970;</span>
+        <span class="stars" data-value="5">&#128970;</span>
+    </div>
+
+    <div class="restRate" id="restRate">
+        <p class="rest">Hur var din vistelse?</p>
+        <span class="stars" data-value="1">&#128970;</span>
+        <span class="stars" data-value="2">&#128970;</span>
+        <span class="stars" data-value="3">&#128970;</span>
+        <span class="stars" data-value="4">&#128970;</span>
+        <span class="stars" data-value="5">&#128970;</span>
+    </div>
+
+    <div class="commentBox">
+        <input type="text" placeholder="Skriv här" class="writeComment">
+        <button class="submitButton" id="submitButton">Submit</button>
+        <p>Tack!</p>
+    </div>
+
+    <h2>Välkommen åter</h2>
+</section>
+
+
+    <script src="db.js"></script>
+    <script src="feedBackscript.js"></script>
+</body>
+</html>
