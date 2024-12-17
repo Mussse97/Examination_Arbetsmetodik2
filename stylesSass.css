@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +8,6 @@
 
 body {
   background-color: #f4f4f4;
-  
 }
 
 header {
@@ -17,7 +17,6 @@ header {
   padding: 10px 20px;
   background-color: #ddd;
 }
-
 
 #menu-page-title {
   text-align: center;
@@ -31,26 +30,28 @@ header {
   align-items: center;
   padding: 0;
   margin: 0;
-  margin-top:-9vh;
+  margin-top: -9vh;
 }
+
 #menu-page-title h2 {
   text-transform: uppercase;
   font-size: 1.4rem;
   letter-spacing: 6px;
   margin-bottom: 1.2vh;
 }
+
 #menu-page-title .menu-page-title-border {
   width: 76vw;
   height: 3px;
   background-color: #45C861;
 }
+
 #menu-page-title .menu-page-title-border p {
   font-size: clamp(0.8rem, 3.9vw, 1rem);
   margin-top: 2vh;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 
 #menu-container {
   display: flex;
@@ -90,13 +91,13 @@ header {
 .menu-info p {
   font-size: 14px;
   color: #666;
-  width:58%;
+  width: 58%;
 }
 
 .menu-price {
   font-weight: bold;
   position: relative;
-  top:10px;
+  top: 10px;
 }
 
 .menu-card button {
@@ -104,11 +105,11 @@ header {
   color: #fff;
   border: none;
   position: absolute;
-  right:6.5vw;
-  margin-top:7.5vh;
+  right: 6.5vw;
+  margin-top: 7.5vh;
   padding: 1vh 2.6vh;
-  border-radius:5px;
-  font-size: .9rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
@@ -126,9 +127,9 @@ footer {
   background-color: #28a745;
   color: white;
   height: 70px;
-  width:100%;
+  width: 100%;
   position: fixed;
-  bottom:0;
+  bottom: 0;
 }
 
 #view-order-button {
@@ -183,11 +184,6 @@ footer {
   cursor: pointer;
   border-radius: 3px;
 }
-
-
-
-
-
 
 /* Fullskärmsoverlay för varukorgen */
 .cart-overlay {
@@ -302,6 +298,4 @@ footer {
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-}
-
-
+}/*# sourceMappingURL=stylesSass.css.map */

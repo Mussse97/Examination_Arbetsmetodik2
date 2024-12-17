@@ -18,60 +18,99 @@ header {
   background-color: #ddd;
 }
 
-#menu-title {
+#menu-page-title {
   text-align: center;
-  padding: 20px 0;
+  width: 100%;
+  position: relative;
+  top: 4vh;
+  height: 25vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  margin-top: -9vh;
+}
+
+#menu-page-title h2 {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+  margin-bottom: 1.2vh;
+}
+
+#menu-page-title .menu-page-title-border {
+  width: 76vw;
+  height: 3px;
+  background-color: #45C861;
+}
+
+#menu-page-title .menu-page-title-border p {
+  font-size: clamp(0.8rem, 3.9vw, 1rem);
+  margin-top: 2vh;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 #menu-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding: 10px;
+  gap: 8px;
+  padding: 15px;
 }
 
 .menu-card {
   display: flex;
   align-items: center;
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 18px;
   border-radius: 5px;
 }
 
 .menu-card img {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   margin-right: 15px;
   background-color: #ddd;
   border-radius: 5px;
 }
 
 .menu-info {
+  position: relative;
+  right: -10px;
   flex-grow: 1;
 }
 
 .menu-info h3 {
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .menu-info p {
   font-size: 14px;
   color: #666;
+  width: 58%;
 }
 
 .menu-price {
   font-weight: bold;
+  position: relative;
+  top: 10px;
 }
 
 .menu-card button {
-  background-color: #333;
+  background-color: #873333;
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  position: absolute;
+  right: 6.5vw;
+  margin-top: 7.5vh;
+  padding: 1vh 2.6vh;
+  border-radius: 5px;
+  font-size: 0.9rem;
   cursor: pointer;
-  border-radius: 3px;
 }
 
 #load-more {
@@ -88,7 +127,9 @@ footer {
   background-color: #28a745;
   color: white;
   height: 70px;
-  position: sticky;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 #view-order-button {
