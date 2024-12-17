@@ -1,6 +1,7 @@
+// Importera den exporterade datan ("selectedMeals") från meals.js
 import { selectedMeals } from './meals.js';
 
-// Koppling mellan veckodagar och rätternas ID
+// Skapa en lista som matchar veckans dagar med måltids-ID:n från "selectedMeals"
 const mealsByDay = [
   "the-gramercy-tavern-burger-4-pack", // Måndag
   "shake-shack-shackburger-8-pack",  // Tisdag
@@ -14,13 +15,13 @@ const mealsByDay = [
 // Hämta dagens veckodag som index (0 = Söndag, 1 = Måndag, ..., 6 = Lördag)
 const todayIndex = new Date().getDay();
 
-// Hämta ID för dagens måltid från mealsByDay
+// Använd dagens index för att hämta motsvarande måltids-ID från mealsByDay
 const todaysMealId = mealsByDay[todayIndex];
 
-// Hitta dagens måltid i selectedMeals baserat på ID
+// Hitta den måltid i "selectedMeals" som matchar dagens ID
 const todaysMeal = selectedMeals.find(meal => meal.id === todaysMealId);
 
-// Hitta elementet där dagens rätt ska visas
+// Hämta referensen till det HTML-element där dagens måltid ska visas
 const mealContainer = document.getElementById("meal-container");
 
 // Dynamiskt uppdatera HTML-innehållet med dagens måltid
@@ -43,6 +44,6 @@ const weeklyMenuItems = document.querySelectorAll("#weekly-menu ul li");
 
 // Kontrollera om dagens index matchar menyn
 if (weeklyMenuItems[todayIndex]) {
-  weeklyMenuItems[todayIndex].style.color = "#45C861"; // Grön färg
+  weeklyMenuItems[todayIndex].style.color = "#8b2500"; // Röd färg
   weeklyMenuItems[todayIndex].style.fontWeight = "bold"; // Fet text
 }
