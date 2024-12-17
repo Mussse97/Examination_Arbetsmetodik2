@@ -45,7 +45,7 @@ header {
   .menu-page-title-border {
     width:78vw;
     height:3px;
-    background-color: green;
+    background-color: rgb(173, 98, 63);
     p {
       font-size: clamp(.9rem, 4vw, 1.1rem);
       margin-top:2vh;
@@ -111,16 +111,9 @@ header {
       margin-top:1vh;
       padding: 1.5vh 3.3vh;
       border-radius: 8px;
-      background-color: green;
+      background-color: rgb(159, 80, 46);
       color: white;
         cursor: pointer;
-    }
-    .menu-add-item-choose {
-      padding: 1.5vh 3.3vh;
-      border-radius: 8px;
-      background:none;
-      border:3px solid green;
-      color: black;
     }
     
     }
@@ -144,28 +137,36 @@ header {
   font-weight: bold;
 }
 
-footer {
-  display: flex;
+#view-order{
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #792f1e;
   color: white;
-  height: 70px;
+  height: 80px;
   width:100%;
   position: fixed;
   bottom:0;
+  display:none;
+  animation: viewOrderAnimation .4s forwards;
+      @keyframes viewOrderAnimation {
+        0% {bottom:-10vh;}
+        100% {bottom:0;}
+      }
 }
 
 #view-order-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   width: 100%;
   background: none;
   color: white;
   border: none;
-  font-size: 18px;
+  font-size: clamp(1.2rem, 3vh, 1.35rem);
+  letter-spacing: 1px;
+ 
   cursor: pointer;
 }
 
@@ -222,7 +223,7 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #333;
+  background-color: #1f1f1f;
   color: white;
   display: flex;
   flex-direction: column;
@@ -240,7 +241,8 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid #494949;
+  border-bottom: 1px solid #9d9d9d;
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.077);
   font-size: 1.2rem;
 }
 
@@ -267,15 +269,19 @@ footer {
 .cart-item {
   display: flex;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #555;
+  padding: 10px;
+  border-bottom: 1px solid #757575d3;
 }
 
 .cart-item img {
-  width: 60px;
-  height: 60px;
-  margin-right: 15px;
+  width: 75px;
+  height: auto;
+  margin-right: 25px;
+  margin-left:10px;
+  border-radius: 3px;
+  border:1px solid rgba(255, 255, 255, 0.093);
   background-color: #ddd; /* Placeholder */
+  margin-bottom:.8vh;
 }
 
 .cart-item-details {
@@ -283,25 +289,32 @@ footer {
 }
 
 .cart-item-details h3 {
-  font-size: 14px;
+  font-size: clamp(14px, 2vh, 16px);
+  font-weight: 600;
+  margin-bottom:.8vh;
 }
 
 .cart-item-details p {
-  font-size: 12px;
+  font-size: clamp(15px, 2vh, 17px);
+  font-weight: 500;
   color: #bbb;
 }
 
 .cart-quantity {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: clamp(5px, 1vh, 8px);
+  font-size: clamp(15px, 2vh, 17px);
+  font-weight: 600;
 }
-
+.quantity-number {
+  padding:.3vh;
+}
 .cart-quantity button {
-  background-color: #555;
+  background-color: #555555e4;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: clamp(3px, 2vh, 6px) clamp(5px, 2vh, 10px);
   cursor: pointer;
 }
 
@@ -312,6 +325,7 @@ footer {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding-top:5vh;
   gap: 8px;
 }
 
@@ -319,10 +333,9 @@ footer {
 
 //William
 .total-price-text {
-  color: green;
+  color: rgb(29, 174, 29);
   font-size: 2rem;
   font-weight: 400;
-  margin-bottom: 2vh;
 }  
 #total-price {
   color:white;
@@ -330,7 +343,7 @@ footer {
   font-weight: 600;
   letter-spacing: 1px;
   margin-top: 5vh;
-  margin-bottom: 2vh;
+  margin-bottom: 5vh;
 }  
 #table-number {
 text-align: center;
@@ -341,7 +354,7 @@ border:none;
 background-color: rgba(128, 128, 128, 0.272);
 }
 #table-number[placeholder] {
-font-size: 1.2rem;
+font-size: clamp(1rem, 2vh, 1.2rem);
 margin-bottom:7vh;
 
 &:focus {
@@ -352,13 +365,13 @@ color:rgb(238, 238, 238);
 color: rgb(212, 97, 97);
 position: relative;
 font-size: 1rem;
-top:-5.7vh;
-display:none;
+top:-6vh;
+visibility: hidden;
 }
 
 
 #your-order-button {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 2vh, 1.4rem);
   font-weight: 500;
   letter-spacing: 1px;
   background: none;
@@ -366,9 +379,9 @@ display:none;
   bottom:5vh;
   margin-bottom:3vh;
   width:80vw;
-  padding: 1.7vh 3.3vh;
+  padding: 1.7vh 3.4vh;
   border-radius: 15px;
-  background-color: green;
+  background-color: rgb(42, 155, 66);
   color: white;
   &:active {
     cursor: pointer;
@@ -377,3 +390,30 @@ display:none;
 }
 
 
+.menu-add-item-choose {
+  padding: 1vh 1.5vh;
+  border-radius: 10px;
+  background:none;
+  border:3px solid  rgb(159, 80, 46);
+  color: black;
+  font-size:1.2rem;
+  position: absolute;
+  right:3vw;
+}
+.menu-quantity {
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 1vh, 7px);
+  font-size: clamp(13px, 2vh, 15px);
+  font-weight: 600;
+}
+.menu-quantity-number {
+  padding:.5vh;
+}
+.menu-quantity button {
+  background-color: #dcdcdce4;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: clamp(1px, 2vh, 3px) clamp(3px, 2vh, 5px);
+  cursor: pointer;
+}

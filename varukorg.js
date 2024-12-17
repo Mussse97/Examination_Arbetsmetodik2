@@ -73,7 +73,7 @@ const menuContainer = document.getElementById("menu-container");
 const orderCount = document.getElementById("order-count");
 
 
-//William har ändrat med div nestings och lagt till klasser.
+//William - ändrat med div nestings och lagt till klasser.
 function displayMenu() {
   const burgers = selectedMeals.slice(0, 7); 
   burgers.forEach((burger, index) => {
@@ -88,7 +88,7 @@ function displayMenu() {
           <h3>${burger.name}</h3>
           <p>${burger.dsc}</p>
           <div class="menu-price">${burger.price} kr
-<button class="menu-add-item" onclick="addToCart('${burger.id}', this)">Lägg till</button>
+          <button class="menu-add-item" onclick="addToCart('${burger.id}', this)">Lägg till</button>
     </div>
         </div>
         `;
@@ -101,20 +101,53 @@ function displayMenu() {
 function addToCart(itemId, button) {
   const item = selectedMeals.find((burger) => burger.id === itemId);
   const existingItem = cart.find((cartItem) => cartItem.id === itemId);
-  
+
+
 
   if (existingItem) {
-    existingItem.quantity++;
+    existingItem.quantity+1;
+}
 
-    
-  } else {
+
+else {
     cart.push({ ...item, quantity: 1 });
 
-     // William - "lägg till" knappen ändras när man trycker på den
-    //  button.classList.add("menu-add-item-choose");
-
+    // William - "Se din order" fältet animering upp.
+    const viewOrderField = document.getElementById("view-order");
+    viewOrderField.style.display="flex";
     
+      // William - "lägg till" knappen ändras när man trycker på den.
+      // Ska bli till quantity räknare som är kopplad till varukorgen
+      // Inte färdig. 
+      function quantityOnMenu(button, itemId) {
+        const item = cart.find((cartItem) => cartItem.id === itemId);
+      
+        if (item) {
+          if (item.quantity > 0) {
+            // Update button to show quantity controls
+            button.classList.remove("menu-add-item");
+            button.classList.add("menu-add-item-choose");
+            button.innerHTML = `
+            <div class="menu-quantity">
+              <button class="menu-quantity button" onclick="changeQuantity('${itemId}', -1)">◀</button>
+              <span class="menu-quantity-number" class="quantity-number">${item.quantity}</span>
+              <button class="menu-quantity button" onclick="changeQuantity('${itemId}', 1)">▶</button>
+            </div>
+              `;
+          } else {
+            // Revert button to "Lägg till" state
+            button.classList.remove("menu-add-item-choose");
+            button.classList.add("menu-add-item");
+            button.innerHTML = `Lägg till`;
+          }
+        }
+      }
+      quantityOnMenu(button, itemId);
+
   }
+
+
+  
   updateOrderButton();
 }
 
@@ -160,27 +193,18 @@ function changeQuantity(itemId, amount) {
   if (item) {
     item.quantity += amount;
     if (item.quantity <= 0) {
-      cart = cart.filter((cartItem) => cartItem.id !== itemId);
+       cart = cart.filter((cartItem) => cartItem.id !== itemId);
     }
-  }
+
+   
+    }
+  
   updateOrderButton();
   viewCart();
 }
 
 
 
-function placeOrder() {
-  const tableNumber = document.getElementById("table-number").value;
-  tableNumber.value = "";
-  if (!tableNumber) {
-    errorMessage();
-    return;
-  }
-  alert(`Order skickad för bord ${tableNumber}!`);
-  cart = [];
-  location.reload()
-  
-}
 
 // Initiering
 displayMenu();
@@ -188,6 +212,7 @@ displayMenu();
 const cartOverlay = document.getElementById("cartOverlay");
 const cartContent = document.getElementById("cartContent");
 const totalAmount = document.getElementById("totalAmount");
+
 
 function openCart() {
   updateCartView();
@@ -197,6 +222,13 @@ function openCart() {
 
 function closeCart() {
   cartOverlay.classList.remove("active");
+
+// William - används för att ta bort bordets felmeddelande 
+// när man stänger varukorgen.
+  const errorMessage = document.getElementById("error-message");
+  if (errorMessage) {
+    errorMessage.style.visibility = "hidden";
+  }
 }
 
 
@@ -218,10 +250,15 @@ function updateCartView() {
       </div>
       <div class="cart-quantity">
         <button onclick="changeQuantity('${item.id}', -1)">◀</button>
-        <span>${item.quantity}</span>
+        <span class="quantity-number">${item.quantity}</span>
         <button onclick="changeQuantity('${item.id}', 1)">▶</button>
       </div>
     `;
+
+
+
+
+
     cartContent.appendChild(cartItem);
     
   });
@@ -233,30 +270,32 @@ function updateCartView() {
 
 
 
-// Ange bordsnummer ERROR
-function errorMessage(){
+// Ange bordsnummer 
+function placeOrder() {
+  const tableNumberInput = document.getElementById("table-number");
+  const errorMessage = document.getElementById("error-message");
+  const submitLowerOrder = document.getElementById("your-order-button");
 
-const tableNumberInput = document.getElementById("table-number");
-const errorMessage = document.getElementById("error-message");
-const submitLowerOrder = document.getElementById("your-order-button");
-
-  submitLowerOrder.addEventListener("click", function () {
+  submitLowerOrder.addEventListener("click", function handleOrder() {
     const value = tableNumberInput.value.trim();
     const min = parseInt(tableNumberInput.min);
     const max = parseInt(tableNumberInput.max);
-  
+
+
     if (value === "") {
       tableNumberInput.value = null;
-      errorMessage.style.display = "block";
+      errorMessage.style.visibility="visible";
       errorMessage.textContent = "Ange ett giltigt bordsnummer.";
     } else if (parseInt(value) < min || parseInt(value) > max) {
       tableNumberInput.value = null;
-      errorMessage.style.display = "block";
+      errorMessage.style.visibility="visible";
       errorMessage.textContent = "Ange ett giltigt bordsnummer.";
     } else {
-      errorMessage.style.display = "none";
+      alert(`Order skickad för bord ${tableNumberInput.value}!`);
+      cart = [];
+      location.reload();
     }
-  });
- 
+  }, { once: true }); // Ensure the listener runs only once
 }
-errorMessage();
+
+placeOrder();

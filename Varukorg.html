@@ -17,7 +17,7 @@
   </header>
 
   
-   <!-- Menu title -->
+   <!-- Menu titel -->
    <main id="menu-main">
     <article id="menu-page-title">
       <h2>Meny</h2>
@@ -30,9 +30,9 @@
   <section id="menu-container"></section>
   <!-- Space mellan sista item och "se din order" fältet -->
     <br><br><br><br>  
- 
-  <footer>
-    <button id="view-order-button" onclick="openCart()">
+ <!-- Ändrade så att "open cart" triggas vart man än klickar på footern -->
+  <footer id="view-order" onclick="openCart()">
+    <button id="view-order-button">
       <span>SE DIN ORDER</span>
       <span id="order-count">0</span>
     </button>
@@ -44,15 +44,18 @@
       <span>DIN ORDER</span>
       <button class="close-btn" onclick="closeCart()">×</button>
     </div>
-   
+  
     <div class="cart-content" id="cartContent">
      
     </div>
     <div class="cart-footer">
+    
       <div class="total" id="totalAmount">
        </div>
       <label for="table-number"></label>
       <input type="number" min="1" max="16" id="table-number" placeholder="Ange ditt bordsnummer" />
+      
+      <!-- Felmeddelande under bordsnumret om man skriver för mycket eller inget -->
       <p id="error-message">Ange ett giltigt bordsnummer</p>
       <button id="your-order-button"  onclick="placeOrder()">BESTÄLL</button>
     </div>
