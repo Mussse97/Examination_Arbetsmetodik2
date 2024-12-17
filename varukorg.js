@@ -44,10 +44,10 @@ function updateOrderButton() {
 
 function viewCart() {
   const overlay = document.getElementById("cart-overlay");
-  const cartItemsContainer = document.getElementById("cart-items");
+  const cartItemsContainer = document.getElementById("cart-content");
   const totalPriceContainer = document.getElementById("total-price");
 
-  cartItemsContainer.innerHTML = "";
+//  cartItemsContainer.innerHTML = "";
   let total = 0;
 
   cart.forEach((item) => {
@@ -62,8 +62,9 @@ function viewCart() {
       <button onclick="changeQuantity('${item.id}', -1)">-</button>
     `;
     cartItemsContainer.appendChild(cartItem);
+    updateCartView() 
   });
-
+  
   totalPriceContainer.innerText = `Total: ${total} kr`;
   overlay.style.display = "flex";
   
@@ -99,3 +100,47 @@ function placeOrder() {
 
 // Initiering
 displayMenu();
+
+const cartOverlay = document.getElementById("cartOverlay");
+const cartContent = document.getElementById("cartContent");
+const totalAmount = document.getElementById("totalAmount");
+
+function openCart() {
+  updateCartView();
+  cartOverlay.classList.add("active");
+}
+
+
+function closeCart() {
+  cartOverlay.classList.remove("active");
+}
+
+
+function updateCartView() {
+  cartContent.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item) => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
+    cartItem.innerHTML = `
+      <img src="${item.img}" alt="${item.name}" />
+      <div class="cart-item-details">
+        <h3>${item.name}</h3>
+        <p>${item.price} kr</p>
+      </div>
+      <div class="cart-quantity">
+        <button onclick="changeQuantity('${item.id}', -1)">◀</button>
+        <span>${item.quantity}</span>
+        <button onclick="changeQuantity('${item.id}', 1)">▶</button>
+      </div>
+    `;
+    cartContent.appendChild(cartItem);
+    
+  });
+  totalAmount.innerText = `TOTAL BELOPP: ${total} KR`;
+}
+

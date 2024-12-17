@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurang Meny</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="db.js"></script> 
+  <script defer src="varukorg.js"></script>
+</head>
+<body>
+  
+  
+  <header>
+    <div id="menu-icon">☰</div>
+    <h1>RESTAURANG</h1>
+    <section id="profile-icon"></section>
+  </header>
+
+  
+  <section id="menu-title">
+    <h2>M E N Y</h2>
+  </section>
+
+  
+  <section id="menu-container"></section>
+
+ 
+  <footer>
+    <button id="view-order-button" onclick="openCart()">
+      <span>SE DIN ORDER</span>
+      <span id="order-count">0</span>
+    </button>
+  </footer>
+
+  
+  <article class="cart-overlay" id="cartOverlay">
+    <div class="cart-header">
+      <span>DIN ORDER</span>
+      <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+    <div class="cart-content" id="cartContent">
+     
+    </div>
+    <div class="cart-footer">
+      <div class="total" id="totalAmount">TOTAL BELOPP: 0 KR</div>
+      <label for="table-number">BORDSNUMMER</label>
+      <input type="number" id="table-number" placeholder="Ange ditt bordsnummer" />
+      <button onclick="placeOrder()">BESTÄLL</button>
+    </div>
+  </article>
+
+</body>
+</html>
