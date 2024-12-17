@@ -88,7 +88,7 @@ function displayMenu() {
           <h3>${burger.name}</h3>
           <p>${burger.dsc}</p>
           <div class="menu-price">${burger.price} kr
-          <button class="menu-add-item" onclick="addToCart('${burger.id}', this)">Lägg till</button>
+          <button class="menu-add-item" onclick="addToCart('${burger.id}');quantityOnMenu('${burger.id}', this)">Lägg till</button>
     </div>
         </div>
         `;
@@ -98,14 +98,14 @@ function displayMenu() {
 }
 
 
-function addToCart(itemId, button) {
+function addToCart(itemId) {
   const item = selectedMeals.find((burger) => burger.id === itemId);
   const existingItem = cart.find((cartItem) => cartItem.id === itemId);
 
 
 
   if (existingItem) {
-    existingItem.quantity+1;
+    existingItem.quantity +1;
 }
 
 
@@ -115,41 +115,43 @@ else {
     // William - "Se din order" fältet animering upp.
     const viewOrderField = document.getElementById("view-order");
     viewOrderField.style.display="flex";
-    
-      // William - "lägg till" knappen ändras när man trycker på den.
-      // Ska bli till quantity räknare som är kopplad till varukorgen
-      // Inte färdig. 
-      function quantityOnMenu(button, itemId) {
-        const item = cart.find((cartItem) => cartItem.id === itemId);
-      
-        if (item) {
-          if (item.quantity > 0) {
-            // Update button to show quantity controls
-            button.classList.remove("menu-add-item");
-            button.classList.add("menu-add-item-choose");
-            button.innerHTML = `
-            <div class="menu-quantity">
-              <button class="menu-quantity button" onclick="changeQuantity('${itemId}', -1)">◀</button>
-              <span class="menu-quantity-number" class="quantity-number">${item.quantity}</span>
-              <button class="menu-quantity button" onclick="changeQuantity('${itemId}', 1)">▶</button>
-            </div>
-              `;
-          } else {
-            // Revert button to "Lägg till" state
-            button.classList.remove("menu-add-item-choose");
-            button.classList.add("menu-add-item");
-            button.innerHTML = `Lägg till`;
-          }
-        }
-      }
-      quantityOnMenu(button, itemId);
-
   }
+  updateOrderButton();
+}
 
 
   
-  updateOrderButton();
-}
+// William - "lägg till" knappen ändras till räknare när man trycker på den.
+// Inte färdig. Går inte tillbaka till "lägg till knapp" efter 0.
+// Om man tar bort eller lägger till på varukorgssidan 
+// så uppdateras den inte.
+      function quantityOnMenu(itemId, button) {
+        const item = cart.find((cartItem) => cartItem.id === itemId);
+
+        if (item) {
+        console.log(item.quantity);
+      
+        if (item.quantity > 0) {
+          button.classList.remove("menu-add-item");
+          button.classList.add("menu-add-item-choose");
+          button.innerHTML = `
+            <div class="menu-quantity">
+              <button class="menu-quantity button" onclick="changeQuantity('${itemId}', -1)">◀</button>
+              <span class="menu-quantity-number">${item.quantity}</span>
+              <button class="menu-quantity button" onclick="changeQuantity('${itemId}', 1)">▶</button>
+            </div>
+          `;
+        } else {
+          cart = cart.filter((cartItem) => cartItem.id !== itemId);
+          button.classList.remove("menu-add-item-choose");
+          button.classList.add("menu-add-item");
+          button.innerHTML = `Lägg till`;
+        }
+      }
+    }
+      quantityOnMenu();
+      updateOrderButton();
+
 
 
 function updateOrderButton() {
@@ -158,11 +160,13 @@ function updateOrderButton() {
   
 }
 
-
+// William - Kommenterade ut kod som gav felmeddelanden.  
+// Vet inte om den behövs eller inte.
 function viewCart() {
-  const overlay = document.getElementById("cart-overlay");
-  const cartItemsContainer = document.getElementById("cart-content");
-  const totalPriceContainer = document.getElementById("total-price");
+
+  // const overlay = document.getElementById("cart-overlay");
+  // const cartItemsContainer = document.getElementById("cart-content");
+  // const totalPriceContainer = document.getElementById("total-price");
 
 //  cartItemsContainer.innerHTML = "";
   let total = 0;
@@ -178,12 +182,12 @@ function viewCart() {
       <button onclick="changeQuantity('${item.id}', 1)">+</button>
       <button onclick="changeQuantity('${item.id}', -1)">-</button>
     `;
-    cartItemsContainer.appendChild(cartItem);
+    // cartItemsContainer.appendChild(cartItem);
     updateCartView() 
   });
   
-  totalPriceContainer.innerText = `${total} kr`;
-  overlay.style.display = "flex";
+  // totalPriceContainer.innerText = `${total} kr`;
+  // overlay.style.display = "flex";
   
 }
 
@@ -192,15 +196,28 @@ function changeQuantity(itemId, amount) {
   const item = cart.find((cartItem) => cartItem.id === itemId);
   if (item) {
     item.quantity += amount;
+    quantityOnMenu();
+
+    
     if (item.quantity <= 0) {
        cart = cart.filter((cartItem) => cartItem.id !== itemId);
-    }
+      quantityOnMenu();
 
-   
     }
-  
+    
+    
+ // Tar bort sista item 
+  if (cart.length === 0) {
+    updateCartView();
+    quantityOnMenu();
+
+  }
+
+   }
   updateOrderButton();
   viewCart();
+
+
 }
 
 
