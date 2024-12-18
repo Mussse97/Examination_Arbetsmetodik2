@@ -1,6 +1,6 @@
-# Arbetsmetodik 2, KYH Front End developer, 2024
+# >c>Arbetsmetodik 2, KYH Front End developer, 2024</c>
 ## Grupp 6, examinationsuppgift 
-Amanda, Musse, Molly, Sara William
+Amanda, Musse, Molly, Sara, William
 ![image 4](https://github.com/user-attachments/assets/bc6efa82-af1c-40e8-884d-4ec4c8c4b418)
 
 Examinationsuppgift för kurs arbetsmetodik 2: 
