@@ -11,10 +11,15 @@
   padding: 10px;
   text-align: center;
 
-  color: rgb(248, 246, 246);
+  color: rgb(218, 184, 168);
   font-size: 40px;
   font-weight: 100;
 }
+
+body {
+background-image: url(background.jpg);
+background-size: contain;
+
 
 .rating {
   display: flex;
@@ -24,19 +29,17 @@
 
   position: relative;
 
-  margin-left: 10px;
+  margin-left: 20px;
   margin-top: 50px;
-  background-image: linear-gradient(
-    100deg,
-    rgb(199, 156, 142),
-    rgb(162, 118, 103),
-    rgba(121, 82, 73, 0.911)
-  );
-  width: 95vw;
+  background-color: rgb(255, 255, 255);
+  width: 90vw;
   height: 90vh;
 
-  border-radius: 5px;
+  border-radius: 10px;
 
+  .tavernaLogoTyp {
+    width: 150px;
+  }
   .thumbsUp {
     display: none;
     position: absolute;
@@ -44,10 +47,10 @@
     rotate: 10deg;
     width: 40vw;
 
-    top: 100px;
-    left: 160px;
+    top: 40px;
+    left: 170px;
 
-    animation: thumbsUpPulse 1.5s infinite ease-in-out;
+    animation: thumbsUpPulse 2.5s infinite ease-in-out;
 
     @keyframes thumbsUpPulse {
       0% {
@@ -67,8 +70,10 @@
 
   .rateH1 {
     color: rgb(48, 33, 29);
-    font-size: x-large;
-    font-weight: 700;
+    font-size: xx-large;
+    font-weight: 100;
+    font-family:  "Chicle", serif;
+    font-style: normal;
   }
 
   .rateP {
@@ -83,7 +88,7 @@
 
     .food {
       font-weight: 100;
-      font-size: large;
+      font-size: x-large;
       color: rgb(48, 33, 29);
     }
   }
@@ -94,7 +99,7 @@
 
     .rest {
       font-weight: 100;
-      font-size: large;
+      font-size: x-large;
       color: #30211d;
     }
   }
@@ -103,20 +108,16 @@
     cursor: pointer;
   }
 
-  .selectedStar {
-    color: gold;
-  }
-
   .value {
     display: none;
   }
-  .commentBox {
+  .commentBox { //kommentarsfältet (container)
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
-    .writeComment {
+    .writeComment { // Kommentarfältet
       width: 80vw;
       height: 10vh;
       border-radius: 5px;
@@ -124,14 +125,17 @@
 
       font-size: medium;
       text-align: center;
+
+      background-color: rgb(218, 184, 168);
     }
 
-    .submitButton {
+    .submitButton { //submitknappen 
       margin: 2vh;
       padding: 10px;
 
-      color: white;
+      color:  white;
       font-size: medium;
+      font-weight: 700;
       background-color: #cf3800;
 
       border-radius: 5px;
@@ -148,4 +152,5 @@
     font-weight: 700;
     color: #30211d;
   }
+}
 }

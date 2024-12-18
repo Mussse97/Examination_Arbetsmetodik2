@@ -4,27 +4,34 @@
   box-sizing: border-box;
 }
 
-.rating {
+body {
+  background-image: url(background.jpg);
+  background-size: contain;
+}
+body .rating {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-left: 10px;
+  margin-left: 20px;
   margin-top: 50px;
-  background-image: linear-gradient(100deg, rgb(199, 156, 142), rgb(162, 118, 103), rgba(121, 82, 73, 0.911));
-  width: 95vw;
+  background-color: rgb(255, 255, 255);
+  width: 90vw;
   height: 90vh;
-  border-radius: 5px;
+  border-radius: 10px;
 }
-.rating .thumbsUp {
+body .rating .tavernaLogoTyp {
+  width: 150px;
+}
+body .rating .thumbsUp {
   display: none;
   position: absolute;
   rotate: 10deg;
   width: 40vw;
-  top: 100px;
-  left: 160px;
-  animation: thumbsUpPulse 1.5s infinite ease-in-out;
+  top: 40px;
+  left: 170px;
+  animation: thumbsUpPulse 2.5s infinite ease-in-out;
 }
 @keyframes thumbsUpPulse {
   0% {
@@ -40,79 +47,80 @@
     opacity: 1;
   }
 }
-.rating .rateH1 {
+body .rating .rateH1 {
   color: rgb(48, 33, 29);
-  font-size: x-large;
-  font-weight: 700;
+  font-size: xx-large;
+  font-weight: 100;
+  font-family: "Chicle", serif;
+  font-style: normal;
 }
-.rating .rateP {
+body .rating .rateP {
   color: rgb(48, 33, 29);
   font-size: larger;
 }
-.rating .foodRate {
+body .rating .foodRate {
   margin-top: 50px;
   width: 60vw;
   height: 15vh;
   padding: 10px;
   text-align: center;
-  color: rgb(248, 246, 246);
+  color: rgb(218, 184, 168);
   font-size: 40px;
   font-weight: 100;
 }
-.rating .foodRate .food {
+body .rating .foodRate .food {
   font-weight: 100;
-  font-size: large;
+  font-size: x-large;
   color: rgb(48, 33, 29);
 }
-.rating .restRate {
+body .rating .restRate {
   width: 60vw;
   height: 15vh;
   padding: 10px;
   text-align: center;
-  color: rgb(248, 246, 246);
+  color: rgb(218, 184, 168);
   font-size: 40px;
   font-weight: 100;
 }
-.rating .restRate .rest {
+body .rating .restRate .rest {
   font-weight: 100;
-  font-size: large;
+  font-size: x-large;
   color: #30211d;
 }
-.rating .stars {
+body .rating .stars {
   cursor: pointer;
 }
-.rating .selectedStar {
-  color: gold;
-}
-.rating .value {
+body .rating .value {
   display: none;
 }
-.rating .commentBox {
+body .rating .commentBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-.rating .commentBox .writeComment {
+body .rating .commentBox .writeComment {
   width: 80vw;
   height: 10vh;
   border-radius: 5px;
   border: none;
   font-size: medium;
   text-align: center;
+  background-color: rgb(218, 184, 168);
 }
-.rating .commentBox .submitButton {
+body .rating .commentBox .submitButton {
   margin: 2vh;
   padding: 10px;
   color: white;
   font-size: medium;
+  font-weight: 700;
   background-color: #cf3800;
   border-radius: 5px;
   border: none;
   width: 30vw;
   height: 5vh;
 }
-.rating .welcomeBack {
+body .rating .welcomeBack {
   display: none;
   font-size: x-large;
   font-weight: 700;

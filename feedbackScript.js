@@ -13,23 +13,37 @@ const welcomeBack = document.getElementById("welcomeBack");
 const thumbsUp = document.getElementById("thumbsUp");
 const value = document.getElementById("collectStar");
 const star = document.getElementById("stars");
+const tavernaLogoTyp = document.getElementById("tavernaLogoTyp")
 
 // Kör funktionerna
 submitPressed();
-valueRating();
+
 //Skapar funktioner till sidan
-
-function valueRating() {
-        star.addEventListener("mouseover", () => {
-        if(star.getAttribute("data_value"))
-            star.classList.add = "gold"
-        else {
-            star.style.color = "white"
-        }
+// Funktion till att välja stjärnor
+document.addEventListener("DOMContentLoaded", function () {
+    const starContainers = document.querySelectorAll(".foodRate, .restRate");
+  
+    starContainers.forEach(container => {
+        const stars = container.querySelectorAll(".stars");
+        
+        stars.forEach((star, index) => {
+            star.addEventListener("click", () => {
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.style.color = "gold"; 
+                    } else {
+                        s.style.color = "rgb(218, 184, 168)"; 
+                    }
+                });
+                const ratingValue = index + 1;
+                const ratingDisplay = container.nextElementSibling?.querySelector(".collectStar");
+                if (ratingDisplay) {
+                    ratingDisplay.textContent = ratingValue;
+                }
+            });
+        });
     });
-}
-
-
+  });
 
 
   // Funktion för submit knappen, add eventlistner med click funktion
@@ -45,6 +59,8 @@ function valueRating() {
       rateH1.style.display = "none";
       rateP.style.display = "none";
 
+      
+
       // Display block på element som har display none
       welcomeBack.style.display = "block";
       thumbsUp.style.display = "block";
@@ -54,7 +70,8 @@ function valueRating() {
       commentBox.appendChild(thankYou);
       thankYou.style.color = "#30211d";
       thankYou.style.fontSize = "40px";
-      thankYou.style.paddingTop = "10px";
+      thankYou.style.paddingTop = "20px";
+      thankYou.style.fontFamily = "Chicle", "serif";
 
       // Lägga till en border
       const border = document.createElement("span");
@@ -62,7 +79,7 @@ function valueRating() {
       border.style.border = "2px, solid #cf3800";
       border.style.width = "80vw";
       border.style.height = "0.1vh";
-      border.style.marginTop = "10px";
+      border.style.marginTop = "20px";
 
       // Skapar en knapp som ska göra så att man kommer tillbaka till startsidan
       const closeRatingButton = document.createElement("button");
@@ -79,7 +96,7 @@ function valueRating() {
       closeRatingButton.style.color = "white";
 
       closeRatingButton.addEventListener("click", () => {
-        // window.location.href("index.html"); // Ska länkas med startsida
+        window.location.href("index.html"); 
         rating.style.display = "none"; // Ska bort när filerna är mergade till main
       });
     });
