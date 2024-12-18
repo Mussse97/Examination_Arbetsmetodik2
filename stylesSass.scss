@@ -155,6 +155,12 @@ header {
       }
 }
 
+  @keyframes viewOrderAnimationHide {
+    0% {bottom:0vh;}
+    100% {bottom:-10vh;}
+  }
+
+
 #view-order-button {
   display: flex;
   justify-content: space-between;

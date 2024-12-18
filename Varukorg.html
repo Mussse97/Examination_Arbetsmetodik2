@@ -29,7 +29,11 @@
   
   <section id="menu-container"></section>
   <!-- Space mellan sista item och "se din order" fältet -->
-    <br><br><br><br>  
+   <br>
+<section id="menu-last-section" style="text-align: center; font-size:.9rem;padding:1.5vh 0vh;">
+  <p><span id="footer-date"></span> Restaurang Taverna &copy;</p></section>
+<br>
+
  <!-- Ändrade så att "open cart" triggas vart man än klickar på footern -->
   <footer id="view-order" onclick="openCart()">
     <button id="view-order-button">
@@ -61,6 +65,15 @@
     </div>
   
   </article>
+
+
+
+<!-- Ändrar året på texten längst ner på sidan -->
+<script>
+  const footerDate = new Date();
+  const year = footerDate.getFullYear();
+  document.getElementById("footer-date").innerHTML = year;
+</script>
 
 </body>
 </html>

@@ -71,7 +71,7 @@ const selectedMeals = [
 let cart = []; 
 const menuContainer = document.getElementById("menu-container");
 const orderCount = document.getElementById("order-count");
-
+const burgers = selectedMeals.slice(0, 7); 
 
 //William - ändrat med div nestings och lagt till klasser.
 function displayMenu() {
@@ -103,11 +103,9 @@ function addToCart(itemId) {
   const existingItem = cart.find((cartItem) => cartItem.id === itemId);
 
 
-
-  if (existingItem) {
-    existingItem.quantity +1;
-}
-
+    if (existingItem) {
+      existingItem.quantity +1;
+  }
 
 else {
     cart.push({ ...item, quantity: 1 });
@@ -129,9 +127,9 @@ else {
         const item = cart.find((cartItem) => cartItem.id === itemId);
 
         if (item) {
-        console.log(item.quantity);
-      
         if (item.quantity > 0) {
+
+          console.log(item.quantity);
           button.classList.remove("menu-add-item");
           button.classList.add("menu-add-item-choose");
           button.innerHTML = `
@@ -141,12 +139,20 @@ else {
               <button class="menu-quantity button" onclick="changeQuantity('${itemId}', 1)">▶</button>
             </div>
           `;
-        } else {
-          cart = cart.filter((cartItem) => cartItem.id !== itemId);
+        } 
+        if (item.quantity === 0)  {
+          
+          console.log(item.quantity);
           button.classList.remove("menu-add-item-choose");
           button.classList.add("menu-add-item");
           button.innerHTML = `Lägg till`;
-        }
+
+          //Fortsätt jobba här.
+          // "Lägg till" knappen ska kunna återanvändas
+          button.setAttribute("onclick", `quantityOnMenu('${itemId}', this)`);
+          // button.addEventListener("click", () => addToCart(itemId, button)); 
+        
+    }
       }
     }
       quantityOnMenu();
@@ -157,7 +163,6 @@ else {
 function updateOrderButton() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   orderCount.innerText = totalItems;
-  
 }
 
 // William - Kommenterade ut kod som gav felmeddelanden.  
@@ -194,23 +199,36 @@ function viewCart() {
 
 function changeQuantity(itemId, amount) {
   const item = cart.find((cartItem) => cartItem.id === itemId);
+  const menuButtons = document.querySelectorAll(".menu-add-item, .menu-add-item-choose");
+
   if (item) {
     item.quantity += amount;
-    quantityOnMenu();
+    menuButtons.forEach((button) => {
+      if (button.onclick.toString().includes(itemId)) {
+        quantityOnMenu(itemId, button); 
+      }
+    });
 
-    
+
     if (item.quantity <= 0) {
        cart = cart.filter((cartItem) => cartItem.id !== itemId);
-      quantityOnMenu();
+      }
 
-    }
-    
-    
+
  // Tar bort sista item 
   if (cart.length === 0) {
-    updateCartView();
-    quantityOnMenu();
 
+    const viewOrderField = document.getElementById("view-order");
+    viewOrderField.style.animation = "viewOrderAnimationHide .4s forwards";
+    setTimeout(() => {
+      viewOrderField.style.display="none";
+      viewOrderField.style.bottom="0";
+      viewOrderField.style.animation = "viewOrderAnimation .4s forwards";
+    }, 400);
+
+
+
+    updateCartView();
   }
 
    }
