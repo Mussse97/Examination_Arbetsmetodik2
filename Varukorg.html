@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurang Meny</title>
+  <link rel="stylesheet" href="/css/stylesSass.css">
+  <script defer src="/js/varukorg.js"></script>
+</head>
+<body>
+  
+  
+  <header>
+    <div id="menu-icon">☰</div>
+    <h1>RESTAURANG</h1>
+    <section id="profile-icon"></section>
+  </header>
+
+  
+   <!-- Menu titel -->
+   <main id="menu-main">
+    <article id="menu-page-title">
+      <h2>Meny</h2>
+      <span class="menu-page-title-border">
+        <p>Välj bland fantastiska rätter</p>
+      </span>
+    </article>
+
+  
+  <section id="menu-container"></section>
+  <!-- Space mellan sista item och "se din order" fältet -->
+   <br>
+<section id="menu-last-section" style="text-align: center; font-size:.9rem;padding:1.5vh 0vh;">
+  <p><span id="footer-date"></span> Restaurang Taverna &copy;</p></section>
+<br>
+
+ <!-- Ändrade så att "open cart" triggas vart man än klickar på footern -->
+  <footer id="view-order" onclick="openCart()">
+    <button id="view-order-button">
+      <span>SE DIN ORDER</span>
+      <span id="order-count">0</span>
+    </button>
+  </footer>
+
+  
+  <article class="cart-overlay" id="cartOverlay">
+    <div class="cart-header">
+      <span>DIN ORDER</span>
+      <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+  
+    <div class="cart-content" id="cartContent">
+     
+    </div>
+    <div class="cart-footer">
+    
+      <div class="total" id="totalAmount">
+       </div>
+      <label for="table-number"></label>
+      <input type="number" min="1" max="16" id="table-number" placeholder="Ange ditt bordsnummer" />
+      
+      <!-- Felmeddelande under bordsnumret om man skriver för mycket eller inget -->
+      <p id="error-message">Ange ett giltigt bordsnummer</p>
+      <button id="your-order-button"  onclick="placeOrder()">BESTÄLL</button>
+    </div>
+  
+  </article>
+
+
+
+<!-- Ändrar året på texten längst ner på sidan -->
+<script>
+  const footerDate = new Date();
+  const year = footerDate.getFullYear();
+  document.getElementById("footer-date").innerHTML = year;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+
+body {
+  margin: 0;
+  /*font-family: Arial, sans-serif;*/
+  /*background-color: rgba(110, 38, 9, 0.699);*/
+  background-color: rgb(236, 236, 236);
+  color: #000000;
+  background-image: url("/public/taverna.2.webp");
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #000000;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+.title {
+  font-size: 32px;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Hamburgaremeny */
+.hamburger-menu {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hamburger-menu span {
+  display: block;
+  height: 4px;
+  background-color: #000000;
+  border-radius: 2px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+/* Sidomeny */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Börjar utanför skärmen */
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  color: #000000;
+  padding-top: 60px;
+  transition: 0.3s;
+  z-index: 9;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.2rem;
+}
+
+/* Container för att hålla infoknappen och popup */
+.info-container {
+  position: sticky;
+  top: 75%;
+  left: 95%;
+  display: inline-block;
+}
+
+/* Infobubbla-knappen */
+.info-button {
+  background-color: #cf3800;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Popupens stil */
+.popup {
+  display: none; /* Dölj popup som standard */
+  position: fixed;
+  top: 20%;
+  left: 40%;
+  /*transform: translateX(-50%);*/
+  background-color: #fff;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 200px;
+  text-align: left;
+  font-size: 20px;
+}
+
+/* Visa popup när den är aktiv */
+.popup.active {
+  display: block;
+}
+
+.beskrivning1, .beskrivning2, .adress {
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
+
+.beskrivning1, .beskrivning2, .adress p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Aktiverad sidomeny */
+.sidebar.active {
+  left: 0; /* Sidomenyn flyttas in */
+}
+
+/*# sourceMappingURL=style.css.map */

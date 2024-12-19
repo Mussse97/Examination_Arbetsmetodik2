@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(/public/background.jpg);
+  background-size: contain;
+}
+body .rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 20px;
+  margin-top: 50px;
+  background-color: rgb(255, 255, 255);
+  width: 90vw;
+  height: 90vh;
+  border-radius: 10px;
+}
+body .rating .tavernaLogoTyp {
+  width: 150px;
+}
+body .rating .thumbsUp {
+  display: none;
+  position: absolute;
+  rotate: 10deg;
+  width: 40vw;
+  top: 40px;
+  left: 170px;
+  animation: thumbsUpPulse 2.5s infinite ease-in-out;
+}
+@keyframes thumbsUpPulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+}
+body .rating .rateH1 {
+  color: rgb(48, 33, 29);
+  font-size: xx-large;
+  font-weight: 100;
+  font-family: "Chicle", serif;
+  font-style: normal;
+}
+body .rating .rateP {
+  color: rgb(48, 33, 29);
+  font-size: larger;
+}
+body .rating .foodRate {
+  margin-top: 50px;
+  width: 60vw;
+  height: 15vh;
+  padding: 10px;
+  text-align: center;
+  color: rgb(218, 184, 168);
+  font-size: 40px;
+  font-weight: 100;
+}
+body .rating .foodRate .food {
+  font-weight: 100;
+  font-size: x-large;
+  color: rgb(48, 33, 29);
+}
+body .rating .restRate {
+  width: 60vw;
+  height: 15vh;
+  padding: 10px;
+  text-align: center;
+  color: rgb(218, 184, 168);
+  font-size: 40px;
+  font-weight: 100;
+}
+body .rating .restRate .rest {
+  font-weight: 100;
+  font-size: x-large;
+  color: #30211d;
+}
+body .rating .stars {
+  cursor: pointer;
+}
+body .rating .value {
+  display: none;
+}
+body .rating .commentBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+body .rating .commentBox .writeComment {
+  width: 80vw;
+  height: 10vh;
+  border-radius: 5px;
+  border: none;
+  font-size: medium;
+  text-align: center;
+  background-color: rgb(218, 184, 168);
+}
+body .rating .commentBox .submitButton {
+  margin: 2vh;
+  padding: 10px;
+  color: white;
+  font-size: medium;
+  font-weight: 700;
+  background-color: #cf3800;
+  border-radius: 5px;
+  border: none;
+  width: 30vw;
+  height: 5vh;
+}
+body .rating .welcomeBack {
+  display: none;
+  font-size: x-large;
+  font-weight: 700;
+  color: #30211d;
+}/*# sourceMappingURL=feedbackStyle.css.map */
