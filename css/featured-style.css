@@ -10,10 +10,10 @@ body {
   background-color: rgb(236, 236, 236);
   color: #000000;
 }
-.bg-image {
+.bg-image2 {
   background-image: url("/public/taverna.2.webp");
-  filter: blur(12px) saturate(105%);
-  -webkit-filter: blur(12px) saturate(105%);
+  filter: blur(32px) saturate(115%);
+  -webkit-filter: blur(32px) saturate(115%);
   z-index:-100;
   height: 100vh;
   width:100%;
@@ -21,7 +21,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
-  transform: scale(1);
+  transform: scale(2.9);
 }
 
 
