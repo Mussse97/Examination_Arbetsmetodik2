@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+    <section class="bg-image"></section>
+    
     <header class="header">
         <div class="logo-container">
             <img src="/public/Taverna__1_-removebg-preview.png" alt="Logotyp" class="logo">
@@ -19,9 +22,10 @@
             <span></span>
             <span></span>
         </section>
+
         <nav class="sidebar" id="sidebar">
             <ul>
-                <li><a href="#startsida">Hem</a></li>
+                <li><a id="nav-active" href="#">Hem</a></li>
                 <li><a href="varukorg.html">Meny</a></li>
                 <li><a href="featured-meals.html">Dagens Special</a></li>
             </ul>
@@ -52,6 +56,22 @@
             <p>Välkommen till oss. <br> Adress: Reastauranggatan 6 <br> Telefonnummer: 0123 - 456789 </p>
         </section>
     </section>
+
+ 
+  <!-- Space mellan sista item och "se din order" fältet -->
+  <section id="menu-last-section" style="background-color: rgb(236, 236, 236);text-align: center; font-size:.9rem;padding:2vh 0vh;">
+    <p><span id="footer-date"></span> Restaurang Taverna &copy;</p></section>
+  
+
+
     <script src="/js/script.js"></script>
+ 
+<!-- Ändrar året på texten längst ner på sidan -->
+<script>
+    const footerDate = new Date();
+    const year = footerDate.getFullYear();
+    document.getElementById("footer-date").innerHTML = year;
+  </script>
+
 </body>
 </html>

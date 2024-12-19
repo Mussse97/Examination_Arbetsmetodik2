@@ -1,12 +1,32 @@
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 body {
   margin: 0;
   /*font-family: Arial, sans-serif;*/
   /*background-color: rgba(110, 38, 9, 0.699);*/
   background-color: rgb(236, 236, 236);
   color: #000000;
-  background-image: url("/public/taverna.2.webp");
+  /* background-image: url("/public/taverna.2.webp"); */
+  font-family: "Inter", serif;
 }
+.bg-image {
+  background-image: url("/public/taverna.2.webp");
+  filter: blur(20px) saturate(115%);
+  -webkit-filter: blur(20px) saturate(115%);
+  z-index:-100;
+  height: 100vh;
+  width:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  transform: scale(1.1);
+}
+
+
+
+
 
 .header {
   display: flex;
@@ -37,6 +57,7 @@ body {
 }
 
 /* Hamburgaremeny */
+
 .hamburger-menu {
   position: absolute;
   top: 20px;
@@ -57,6 +78,8 @@ body {
   border-radius: 2px;
   width: 100%;
   transition: 0.3s;
+  position: relative;
+  top:.8vh;
 }
 
 /* Sidomeny */
@@ -133,8 +156,17 @@ body {
 .popup.active {
   display: block;
 }
+.beskrivning1 {
+  margin-top:-10px;
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
 
-.beskrivning1, .beskrivning2, .adress {
+.beskrivning2, .adress {
   margin-top: 20px;
   text-align: center;
   padding: 20px;
@@ -145,7 +177,7 @@ body {
 }
 
 .beskrivning1, .beskrivning2, .adress p {
-  font-size: 1.2rem;
+  font-size:clamp(.95rem, 2vh, 1.08rem);
   line-height: 1.6;
 }
 
@@ -158,6 +190,11 @@ img {
 /* Aktiverad sidomeny */
 .sidebar.active {
   left: 0; /* Sidomenyn flyttas in */
+}
+
+#nav-active {
+  font-weight: 700;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=style.css.map */
