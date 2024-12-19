@@ -4,9 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taverna</title>
-  <link rel="stylesheet" href="scss/main.css">
+  <link rel="stylesheet" href="scss/featured-style.css">
+  <link rel="stylesheet" href="scss/style.css">
 </head>
 <body>
+  <!-- Amandas header -->
+  <header class="header">
+    <div class="logo-container">
+      <img src="Taverna__1_-removebg-preview.png" alt="Logotyp" class="logo">
+    </div>
+  </header>
+
+  <!-- Amandas Hamburgaremeny -->
+  <section class="hamburger-menu" id="hamburger-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </section>
+
+    <!-- Sidomeny -->
+    <nav class="sidebar" id="sidebar">
+      <ul>
+        <li><a href="#startsida">Hem</a></li>
+        <li><a href="varukorg.html">Meny</a></li>
+        <li><a href="featured-meals.html">Dagens Special</a></li>
+      </ul>
+    </nav>
+
   <!-- Introduktionstext -->
   <section id="intro">
     <p>
@@ -38,7 +62,7 @@
     </ul>
   </section>
 
- <!-- Länkar till JavaScript-filen, module  låter mig använda import och export för att dela upp koden i mindre filer. -->
+  <!-- Länkar till JavaScript-filen, module  låter mig använda import och export för att dela upp koden i mindre filer. -->
   <script type="module" src="featured-meal.js"></script>
 </body>
 </html>
