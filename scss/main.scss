@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Chicle&family=Silkscreen:wght@400;700&display=swap');
 
 // Grundinställningar för mobil
 * {
@@ -34,8 +35,9 @@ body {
   }
 
   h2 {
+    font-family: "Chicle", serif;
     margin-bottom: 15px; // Skapa avstånd mellan rubrik och kort
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
     color: $primaryColor; // Grön färg för rubriken
   }
@@ -126,8 +128,9 @@ body {
   background-color: $menuBackgroundColor; // Ljus bakgrundsfärg   // Ljus bakgrundsfärg (valfritt)
 
   h2 {
+    font-family: "Chicle", serif;
     margin-bottom: 10px;       // Avstånd under rubriken
-    font-size: 1.6rem;
+    font-size: 2rem;
     color: $primaryColor; // Grön färg för rubrik
   }
 
