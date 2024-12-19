@@ -16,12 +16,12 @@
   font-weight: 100;
 }
 
-body {
+body { // Style för hela body
 background-image: url(background.jpg);
 background-size: contain;
 
 
-.rating {
+.rating { // hela "fönstret"
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,10 +37,10 @@ background-size: contain;
 
   border-radius: 10px;
 
-  .tavernaLogoTyp {
+  .tavernaLogoTyp { //logotypen
     width: 150px;
   }
-  .thumbsUp {
+  .thumbsUp { // tummen upp animationen
     display: none;
     position: absolute;
 
@@ -52,7 +52,7 @@ background-size: contain;
 
     animation: thumbsUpPulse 2.5s infinite ease-in-out;
 
-    @keyframes thumbsUpPulse {
+    @keyframes thumbsUpPulse { //keyframes för att göra en animation
       0% {
         transform: scale(0.5);
         opacity: 1;
@@ -68,7 +68,7 @@ background-size: contain;
     }
   }
 
-  .rateH1 {
+  .rateH1 { // h1 elementet
     color: rgb(48, 33, 29);
     font-size: xx-large;
     font-weight: 100;
@@ -76,24 +76,24 @@ background-size: contain;
     font-style: normal;
   }
 
-  .rateP {
+  .rateP { // p element
     color: rgb(48, 33, 29);
     font-size: larger;
   }
 
-  .foodRate {
+  .foodRate { //
     margin-top: 50px;
     @include ratingSystem();
 
 
-    .food {
+    .food { //
       font-weight: 100;
       font-size: x-large;
       color: rgb(48, 33, 29);
     }
   }
 
-  .restRate {
+  .restRate { //
     @include ratingSystem();
 
 
