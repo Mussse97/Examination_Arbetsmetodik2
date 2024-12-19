@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import 'style.scss';
 @import url('https://fonts.googleapis.com/css2?family=Chicle&family=Silkscreen:wght@400;700&display=swap');
 
 // Grundinställningar för mobil
@@ -126,6 +127,8 @@ body {
   margin: 20px 10px;           // Skapar lite utrymme runt sektionen
   padding: 15px;               // Lägger till inre marginal
   background-color: $menuBackgroundColor; // Ljus bakgrundsfärg   // Ljus bakgrundsfärg (valfritt)
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   h2 {
     font-family: "Chicle", serif;
