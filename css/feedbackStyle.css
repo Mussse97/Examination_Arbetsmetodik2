@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -15,10 +17,11 @@ body .rating {
   justify-content: center;
   position: relative;
   margin-left: 20px;
-  margin-top: 50px;
+  margin-top: clamp(30px, 5vh, 50px);
   background-color: rgb(255, 255, 255);
   width: 90vw;
   height: 90vh;
+  font-family: "Inter", serif;
   border-radius: 10px;
 }
 body .rating .tavernaLogoTyp {
@@ -49,28 +52,31 @@ body .rating .thumbsUp {
 }
 body .rating .rateH1 {
   color: rgb(48, 33, 29);
-  font-size: xx-large;
+  font-size: clamp(1.5rem, 3.3vh, 1.9rem);
   font-weight: 100;
   font-family: "Chicle", serif;
   font-style: normal;
 }
 body .rating .rateP {
   color: rgb(48, 33, 29);
-  font-size: larger;
+  font-weight: 300;
+  font-size: clamp(1rem, 2vh, 1.1rem);
+  position: relative;
+  top:.5vh;
 }
 body .rating .foodRate {
-  margin-top: 50px;
+  margin-top: clamp(30px, 5vh, 50px);
   width: 60vw;
   height: 15vh;
   padding: 10px;
   text-align: center;
   color: rgb(218, 184, 168);
-  font-size: 40px;
+  font-size: clamp(30px, 4.4vh, 40px);
   font-weight: 100;
 }
 body .rating .foodRate .food {
-  font-weight: 100;
-  font-size: x-large;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2.5vh, 1.3rem);
   color: rgb(48, 33, 29);
 }
 body .rating .restRate {
@@ -79,12 +85,12 @@ body .rating .restRate {
   padding: 10px;
   text-align: center;
   color: rgb(218, 184, 168);
-  font-size: 40px;
+  font-size: clamp(30px, 4.4vh, 40px);
   font-weight: 100;
 }
 body .rating .restRate .rest {
-  font-weight: 100;
-  font-size: x-large;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2.5vh, 1.3rem);
   color: #30211d;
 }
 body .rating .stars {
@@ -108,6 +114,8 @@ body .rating .commentBox .writeComment {
   text-align: center;
   background-color: rgb(218, 184, 168);
 }
+
+
 body .rating .commentBox .submitButton {
   margin: 2vh;
   padding: 10px;
@@ -125,4 +133,9 @@ body .rating .welcomeBack {
   font-size: x-large;
   font-weight: 700;
   color: #30211d;
-}/*# sourceMappingURL=feedbackStyle.css.map */
+}
+.writeComment::placeholder {
+  color:rgb(64, 33, 33);
+  font-size: 1rem;
+}
+/*# sourceMappingURL=feedbackStyle.css.map */

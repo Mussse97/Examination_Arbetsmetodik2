@@ -126,6 +126,10 @@ else {
       function quantityOnMenu(itemId, button) {
         const item = cart.find((cartItem) => cartItem.id === itemId);
 
+        const submitLowerOrder = document.getElementById("your-order-button");
+        submitLowerOrder.style.backgroundColor="#cf3800";
+        submitLowerOrder.style.pointerEvents="auto";
+
         if (item) {
         if (item.quantity > 0) {
 
@@ -162,12 +166,14 @@ else {
 
 function updateOrderButton() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  orderCount.innerText = totalItems;
+  orderCount.innerHTML = totalItems;
+  
 }
 
 // William - Kommenterade ut kod som gav felmeddelanden.  
 // Vet inte om den behövs eller inte.
 function viewCart() {
+
 
   // const overlay = document.getElementById("cart-overlay");
   // const cartItemsContainer = document.getElementById("cart-content");
@@ -217,6 +223,11 @@ function changeQuantity(itemId, amount) {
 
  // Tar bort sista item 
   if (cart.length === 0) {
+
+    const submitLowerOrder = document.getElementById("your-order-button");
+    submitLowerOrder.style.backgroundColor="#86615b";
+    submitLowerOrder.style.pointerEvents="none";
+
 
     const viewOrderField = document.getElementById("view-order");
     viewOrderField.style.animation = "viewOrderAnimationHide .4s forwards";
@@ -334,3 +345,21 @@ function placeOrder() {
 }
 
 placeOrder();
+
+
+
+
+
+
+
+
+//Amandas kod
+// Hämta hamburgaremenyn och sidomenyn
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const sidebar = document.getElementById('sidebar');
+
+// Lägg till klick-event på hamburgaremenyn
+hamburgerMenu.addEventListener('click', () => {
+    sidebar.classList.toggle('active'); // Lägg till/ta bort klassen 'active' på sidomenyn
+});
+

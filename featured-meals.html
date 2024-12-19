@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <section class="bg-image"></section>
+
   <!-- Amandas header -->
   <header class="header">
     <div class="logo-container">
@@ -27,7 +30,7 @@
       <ul>
         <li><a href="index.html">Hem</a></li>
         <li><a href="varukorg.html">Meny</a></li>
-        <li><a href="featured-meals.html">Dagens Special</a></li>
+        <li><a id="nav-active" href="#">Dagens Special</a></li>
       </ul>
     </nav>
 
@@ -62,7 +65,24 @@
     </ul>
   </section>
 
+
+    
+  <!-- Space mellan sista item och "se din order" fältet -->
+<section id="menu-last-section" style="background-color: rgb(236, 236, 236);text-align: center; font-size:.9rem;padding:3.5vh 0vh;">
+  <p><span id="footer-date"></span> Restaurang Taverna &copy;</p></section>
+
+
   <!-- Länkar till JavaScript-filen, module  låter mig använda import och export för att dela upp koden i mindre filer. -->
   <script type="module" src="/js/featured-meal.js"></script>
+
+
+  
+<!-- Ändrar året på texten längst ner på sidan -->
+<script>
+  const footerDate = new Date();
+  const year = footerDate.getFullYear();
+  document.getElementById("footer-date").innerHTML = year;
+</script>
+
 </body>
 </html>
