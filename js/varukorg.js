@@ -304,6 +304,7 @@ const totalAmount = document.getElementById("totalAmount");
 
 function openCart() {
   updateCartView();
+  cartOverlay.style.zIndex="1000";
   cartOverlay.classList.add("active");
   const viewOrderField = document.getElementById("view-order");
   setTimeout(() => {
@@ -314,11 +315,13 @@ function openCart() {
 
 
 function closeCart() {
+  const cartOverlay = document.getElementById("cartOverlay");
   cartOverlay.classList.remove("active");
   setTimeout(() => {
+    cartOverlay.style.zIndex="-1000";
     viewOrderField.style.display="none";
     viewOrderField.style.bottom="0";
-  }, 300);
+  }, 400);
 
 // William - används för att ta bort bordets felmeddelande 
 // när man stänger varukorgen.
