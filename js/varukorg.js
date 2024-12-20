@@ -305,19 +305,39 @@ const totalAmount = document.getElementById("totalAmount");
 function openCart() {
   updateCartView();
   cartOverlay.classList.add("active");
+  const viewOrderField = document.getElementById("view-order");
+  setTimeout(() => {
+    viewOrderField.style.display="none";
+    viewOrderField.style.bottom="0";
+  }, 300);
 }
 
 
 function closeCart() {
   cartOverlay.classList.remove("active");
+  setTimeout(() => {
+    viewOrderField.style.display="none";
+    viewOrderField.style.bottom="0";
+  }, 300);
 
 // William - används för att ta bort bordets felmeddelande 
 // när man stänger varukorgen.
   const errorMessage = document.getElementById("error-message");
+  const viewOrderField = document.getElementById("view-order");
+
   if (errorMessage) {
     errorMessage.style.visibility = "hidden";
   }
+  
+  if (cart.length >= 1) {
+  setTimeout(() => {
+    viewOrderField.style.display="flex";
+  }, 400);
 }
+  else
+    viewOrderField.style.display="none";
+  }
+
 
 
 function updateCartView() {
@@ -382,10 +402,13 @@ function placeOrder() {
       const orderSuccessPopup = document.getElementById("cart-order-success-popup");
       const orderSuccessPopupText = document.getElementById("cart-order-success-popup-text");
       const orderSuccessPopupButton = document.getElementById("cart-order-success-popup-button");
+      const orderSuccessPopupOverlay = document.getElementById("cart-order-success-popup-overlay");
 
+      orderSuccessPopupOverlay.style.display="block";
       orderSuccessPopup.style.display = "flex";
       orderSuccessPopupText.innerHTML= `Order skickad <br> för <span class="success-order-table-style"> bord ${tableNumberInput.value}! </span>`;
-      
+
+
       cart = [];
       orderSuccessPopupButton.addEventListener("click", ()=> {
         window.location.href = "feedbackIndex.html";
