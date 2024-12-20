@@ -75,7 +75,7 @@ const burgers = selectedMeals.slice(0, 7);
 
 //William - ändrat med div nestings och lagt till klasser.
 function displayMenu() {
-  const burgers = selectedMeals.slice(0, 7); 
+  
   burgers.forEach((burger, index) => {
     const card = document.createElement("div");
     card.classList.add("menu-card");
@@ -98,14 +98,20 @@ function displayMenu() {
 }
 
 
+
+let cartGoFromItemToEmpty = false;
+
 function addToCart(itemId) {
   const item = selectedMeals.find((burger) => burger.id === itemId);
   const existingItem = cart.find((cartItem) => cartItem.id === itemId);
 
 
+
     if (existingItem) {
       existingItem.quantity +1;
   }
+
+
 
 else {
     cart.push({ ...item, quantity: 1 });
@@ -118,50 +124,78 @@ else {
 }
 
 
-  
-// William - "lägg till" knappen ändras till räknare när man trycker på den.
-// Inte färdig. Går inte tillbaka till "lägg till knapp" efter 0.
-// Om man tar bort eller lägger till på varukorgssidan 
-// så uppdateras den inte.
+
+// function cartReturn(){
+//   // // const item = cart.find((cartItem) => cartItem.id === itemId);
+//   // // if (cartGoFromItemToEmpty === true) {
+//   //   // button.addEventListener("click", addToCart());
+//   //   // button.setAttribute("onclick", `addToCart('${itemId}')`);
+
+//   //   addToCart();
+// }
+// // }
+
+
       function quantityOnMenu(itemId, button) {
         const item = cart.find((cartItem) => cartItem.id === itemId);
-
         const submitLowerOrder = document.getElementById("your-order-button");
         submitLowerOrder.style.backgroundColor="#cf3800";
         submitLowerOrder.style.pointerEvents="auto";
 
-        if (item) {
-        if (item.quantity > 0) {
+        
+        if (cartGoFromItemToEmpty === true) {
+          button.innerHTML = `
+          <div class="menu-quantity">
+            <div onclick="addToCart('${itemId}')">Lägg till</div>
+          </div>
+        `;   
+    }
 
+
+        if (item) {
+  
+        if (item.quantity >= 1) {
+          addToCart(itemId);
           console.log(item.quantity);
+     
           button.classList.remove("menu-add-item");
           button.classList.add("menu-add-item-choose");
+
           button.innerHTML = `
             <div class="menu-quantity">
               <button class="menu-quantity button" onclick="changeQuantity('${itemId}', -1)">◀</button>
               <span class="menu-quantity-number">${item.quantity}</span>
               <button class="menu-quantity button" onclick="changeQuantity('${itemId}', 1)">▶</button>
             </div>
-          `;
-        } 
+          `;   
+        
+      };
         if (item.quantity === 0)  {
           
+          cart = cart.filter((cartItem) => cartItem.id !== itemId);
+
+          console.log(button.onclick);
+
           console.log(item.quantity);
           button.classList.remove("menu-add-item-choose");
           button.classList.add("menu-add-item");
           button.innerHTML = `Lägg till`;
 
-          //Fortsätt jobba här.
-          // "Lägg till" knappen ska kunna återanvändas
           button.setAttribute("onclick", `quantityOnMenu('${itemId}', this)`);
-          // button.addEventListener("click", () => addToCart(itemId, button)); 
-        
+  
+          // button.addEventListener("click", cartReturn());
+          cartGoFromItemToEmpty = true;
+
+     
+          console.log(button.onclick);
+          // changeQuantity();
+         
     }
       }
     }
       quantityOnMenu();
       updateOrderButton();
-
+     
 
 
 function updateOrderButton() {
@@ -218,6 +252,16 @@ function changeQuantity(itemId, amount) {
 
     if (item.quantity <= 0) {
        cart = cart.filter((cartItem) => cartItem.id !== itemId);
+       menuButtons.forEach((button) => {
+        if (button.onclick.toString().includes(itemId)) {
+          button.innerHTML = `
+          <div class="menu-quantity">
+            <div onclick="addToCart('${itemId}')">Lägg till</div>
+          </div>
+        `; 
+        }
+      });
+
       }
 
 
@@ -238,14 +282,12 @@ function changeQuantity(itemId, amount) {
     }, 400);
 
 
-
-    updateCartView();
   }
-
-   }
+  
   updateOrderButton();
+  updateCartView();
+   }
   viewCart();
-
 
 }
 
