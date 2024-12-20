@@ -65,17 +65,14 @@ const selectedMeals = [
     },
 ];
 
-
-
-
 let cart = []; 
 const menuContainer = document.getElementById("menu-container");
 const orderCount = document.getElementById("order-count");
 const burgers = selectedMeals.slice(0, 7); 
 
-//William - ändrat med div nestings och lagt till klasser.
+
 function displayMenu() {
-  const burgers = selectedMeals.slice(0, 7); 
+  
   burgers.forEach((burger, index) => {
     const card = document.createElement("div");
     card.classList.add("menu-card");
@@ -97,11 +94,11 @@ function displayMenu() {
   });
 }
 
+let cartGoFromItemToEmpty = false;
 
 function addToCart(itemId) {
   const item = selectedMeals.find((burger) => burger.id === itemId);
   const existingItem = cart.find((cartItem) => cartItem.id === itemId);
-
 
     if (existingItem) {
       existingItem.quantity +1;
@@ -110,59 +107,54 @@ function addToCart(itemId) {
 else {
     cart.push({ ...item, quantity: 1 });
 
-    // William - "Se din order" fältet animering upp.
     const viewOrderField = document.getElementById("view-order");
     viewOrderField.style.display="flex";
   }
   updateOrderButton();
 }
 
-
-  
-// William - "lägg till" knappen ändras till räknare när man trycker på den.
-// Inte färdig. Går inte tillbaka till "lägg till knapp" efter 0.
-// Om man tar bort eller lägger till på varukorgssidan 
-// så uppdateras den inte.
       function quantityOnMenu(itemId, button) {
         const item = cart.find((cartItem) => cartItem.id === itemId);
-
         const submitLowerOrder = document.getElementById("your-order-button");
         submitLowerOrder.style.backgroundColor="#cf3800";
         submitLowerOrder.style.pointerEvents="auto";
 
+        
+        if (cartGoFromItemToEmpty === true) {
+          button.innerHTML = `
+          <div class="menu-quantity">
+            <div onclick="addToCart('${itemId}')">Lägg till</div>
+          </div>
+        `;   
+    }
         if (item) {
-        if (item.quantity > 0) {
-
-          console.log(item.quantity);
+        if (item.quantity >= 1) {
+          addToCart(itemId);
           button.classList.remove("menu-add-item");
           button.classList.add("menu-add-item-choose");
+
           button.innerHTML = `
             <div class="menu-quantity">
               <button class="menu-quantity button" onclick="changeQuantity('${itemId}', -1)">◀</button>
               <span class="menu-quantity-number">${item.quantity}</span>
               <button class="menu-quantity button" onclick="changeQuantity('${itemId}', 1)">▶</button>
             </div>
-          `;
-        } 
+          `;   
+      };
         if (item.quantity === 0)  {
-          
-          console.log(item.quantity);
+        
+          cart = cart.filter((cartItem) => cartItem.id !== itemId);
           button.classList.remove("menu-add-item-choose");
           button.classList.add("menu-add-item");
           button.innerHTML = `Lägg till`;
-
-          //Fortsätt jobba här.
-          // "Lägg till" knappen ska kunna återanvändas
           button.setAttribute("onclick", `quantityOnMenu('${itemId}', this)`);
-          // button.addEventListener("click", () => addToCart(itemId, button)); 
-        
+          cartGoFromItemToEmpty = true; 
     }
       }
     }
       quantityOnMenu();
       updateOrderButton();
-
-
+     
 
 function updateOrderButton() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -170,36 +162,13 @@ function updateOrderButton() {
   
 }
 
-// William - Kommenterade ut kod som gav felmeddelanden.  
-// Vet inte om den behövs eller inte.
 function viewCart() {
-
-
-  // const overlay = document.getElementById("cart-overlay");
-  // const cartItemsContainer = document.getElementById("cart-content");
-  // const totalPriceContainer = document.getElementById("total-price");
-
-//  cartItemsContainer.innerHTML = "";
   let total = 0;
 
   cart.forEach((item) => {
     total += item.price * item.quantity;
-
-    const cartItem = document.createElement("div");
-    cartItem.classList.add("cart-item");
-    cartItem.innerHTML = `
-      <span>${item.name} (${item.quantity})</span>
-      <span>${item.price * item.quantity} kr</span>
-      <button onclick="changeQuantity('${item.id}', 1)">+</button>
-      <button onclick="changeQuantity('${item.id}', -1)">-</button>
-    `;
-    // cartItemsContainer.appendChild(cartItem);
     updateCartView() 
-  });
-  
-  // totalPriceContainer.innerText = `${total} kr`;
-  // overlay.style.display = "flex";
-  
+  }); 
 }
 
 
@@ -218,6 +187,16 @@ function changeQuantity(itemId, amount) {
 
     if (item.quantity <= 0) {
        cart = cart.filter((cartItem) => cartItem.id !== itemId);
+       menuButtons.forEach((button) => {
+        if (button.onclick.toString().includes(itemId)) {
+          button.innerHTML = `
+          <div class="menu-quantity">
+            <div onclick="addToCart('${itemId}')">Lägg till</div>
+          </div>
+        `; 
+        }
+      });
+
       }
 
 
@@ -237,22 +216,14 @@ function changeQuantity(itemId, amount) {
       viewOrderField.style.animation = "viewOrderAnimation .4s forwards";
     }, 400);
 
-
-
-    updateCartView();
   }
-
-   }
   updateOrderButton();
+  updateCartView();
+   }
   viewCart();
-
 
 }
 
-
-
-
-// Initiering
 displayMenu();
 
 const cartOverlay = document.getElementById("cartOverlay");
@@ -262,20 +233,42 @@ const totalAmount = document.getElementById("totalAmount");
 
 function openCart() {
   updateCartView();
+  cartOverlay.style.zIndex="1000";
   cartOverlay.classList.add("active");
+  const viewOrderField = document.getElementById("view-order");
+  setTimeout(() => {
+    viewOrderField.style.display="none";
+    viewOrderField.style.bottom="0";
+  }, 300);
 }
 
 
 function closeCart() {
+  const cartOverlay = document.getElementById("cartOverlay");
   cartOverlay.classList.remove("active");
+  setTimeout(() => {
+    cartOverlay.style.zIndex="-1000";
+    viewOrderField.style.display="none";
+    viewOrderField.style.bottom="0";
+  }, 400);
 
 // William - används för att ta bort bordets felmeddelande 
-// när man stänger varukorgen.
   const errorMessage = document.getElementById("error-message");
+  const viewOrderField = document.getElementById("view-order");
+
   if (errorMessage) {
     errorMessage.style.visibility = "hidden";
   }
+  
+  if (cart.length >= 1) {
+  setTimeout(() => {
+    viewOrderField.style.display="flex";
+  }, 400);
 }
+  else
+    viewOrderField.style.display="none";
+  }
+
 
 
 function updateCartView() {
@@ -300,11 +293,6 @@ function updateCartView() {
         <button onclick="changeQuantity('${item.id}', 1)">▶</button>
       </div>
     `;
-
-
-
-
-
     cartContent.appendChild(cartItem);
     
   });
@@ -312,9 +300,6 @@ function updateCartView() {
   <span class="total-price-text"> TOTALT: </span>  
    <span id="total-price"> ${total} kr  </span>`;
 }
-
-
-
 
 // Ange bordsnummer 
 function placeOrder() {
@@ -337,21 +322,25 @@ function placeOrder() {
       errorMessage.style.visibility="visible";
       errorMessage.textContent = "Ange ett giltigt bordsnummer.";
     } else {
-      alert(`Order skickad för bord ${tableNumberInput.value}!`);
+      const orderSuccessPopup = document.getElementById("cart-order-success-popup");
+      const orderSuccessPopupText = document.getElementById("cart-order-success-popup-text");
+      const orderSuccessPopupButton = document.getElementById("cart-order-success-popup-button");
+      const orderSuccessPopupOverlay = document.getElementById("cart-order-success-popup-overlay");
+
+      orderSuccessPopupOverlay.style.display="block";
+      orderSuccessPopup.style.display = "flex";
+      orderSuccessPopupText.innerHTML= `Order skickad <br> för <span class="success-order-table-style"> bord ${tableNumberInput.value}! </span>`;
+
+
       cart = [];
-      window.location.href = "feedbackIndex.html";
+      orderSuccessPopupButton.addEventListener("click", ()=> {
+        window.location.href = "feedbackIndex.html";
+      });
     }
   }, { once: true }); // Ensure the listener runs only once
 }
 
 placeOrder();
-
-
-
-
-
-
-
 
 //Amandas kod
 // Hämta hamburgaremenyn och sidomenyn
@@ -362,4 +351,3 @@ const sidebar = document.getElementById('sidebar');
 hamburgerMenu.addEventListener('click', () => {
     sidebar.classList.toggle('active'); // Lägg till/ta bort klassen 'active' på sidomenyn
 });
-
