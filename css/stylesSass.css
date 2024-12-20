@@ -572,4 +572,45 @@ margin-bottom:.3vh;
   pointer-events: none;
 }
 
+#cart-order-success-popup {
+  z-index: 100000000000000;
+  width:90%;
+  height:30vh;
+  background-color: #ECECEC;
+  position: fixed;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  border-radius: 15px;
+  display:none;
+}
+#cart-order-success-popup h3 {
+font-size:clamp(1.1rem, 2.7vh, 1.4rem);
+text-align: center;
+margin-bottom:4.5vh;
+line-height: 3.6vh;
+}
+.success-order-table-style {
+  color:#cf3800;
+}
+
+#cart-order-success-popup button {
+  font-size:clamp(.9rem, 2.7vh, 1.1rem);
+  text-align: center;
+  width:40vw;
+  align-self: center;
+  background:none;
+  border:none;
+  width: 50vw;
+  padding: 1.5vh 2.4vh;
+  border-radius: 15px;
+  background-color: #9F502E;
+  color: white;
+  }
+
+
 /*# sourceMappingURL=stylesSass.css.map */

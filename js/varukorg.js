@@ -337,9 +337,17 @@ function placeOrder() {
       errorMessage.style.visibility="visible";
       errorMessage.textContent = "Ange ett giltigt bordsnummer.";
     } else {
-      alert(`Order skickad för bord ${tableNumberInput.value}!`);
+      const orderSuccessPopup = document.getElementById("cart-order-success-popup");
+      const orderSuccessPopupText = document.getElementById("cart-order-success-popup-text");
+      const orderSuccessPopupButton = document.getElementById("cart-order-success-popup-button");
+
+      orderSuccessPopup.style.display = "flex";
+      orderSuccessPopupText.innerHTML= `Order skickad <br> för <span class="success-order-table-style"> bord ${tableNumberInput.value}! </span>`;
+      
       cart = [];
-      window.location.href = "feedbackIndex.html";
+      orderSuccessPopupButton.addEventListener("click", ()=> {
+        window.location.href = "feedbackIndex.html";
+      });
     }
   }, { once: true }); // Ensure the listener runs only once
 }
