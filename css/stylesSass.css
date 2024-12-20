@@ -15,7 +15,7 @@ body {
 }
 
 .bg-image {
-  background-image: url("/public/taverna.2.webp");
+  background-image: url("../public/taverna.2.webp");
   filter: blur(20px) saturate(115%);
   -webkit-filter: blur(20px) saturate(115%);
   z-index:-100;
@@ -281,9 +281,10 @@ margin-bottom:.3vh;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color:#792f1e;
+  border-top:1px solid rgba(0, 0, 0, 0.501);
+  background-color:#9c492b;
   color: white;
-  height: 80px;
+  height: 84px;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -322,6 +323,7 @@ margin-bottom:.3vh;
 }
 
 #cart-overlay {
+  z-index:100000000;
   position: fixed;
   top: 0;
   left: 0;
@@ -368,7 +370,7 @@ margin-bottom:.3vh;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   background-color: #211515;
   color: white;
   display: flex;
@@ -472,19 +474,21 @@ margin-bottom:.3vh;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom:20vh;
   padding-top: 5vh;
   gap: 8px;
 }
 
 .total-price-text {
   color: #cf3800;
-  font-size: 2rem;
+  font-size: 1.9rem;
+  letter-spacing: 1px;
   font-weight: 400;
 }
 
 #total-price {
   color: white;
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 600;
   letter-spacing: 1px;
   margin-top: 5vh;
@@ -517,13 +521,14 @@ margin-bottom:.3vh;
 }
 
 #your-order-button {
-  font-size: clamp(1.2rem, 2vh, 1.4rem);
+  font-size: clamp(1.1rem, 1.8vh, 1.3rem);
   font-weight: 500;
   letter-spacing: 1px;
   background: none;
   border: none;
-  bottom: 5vh;
-  margin-bottom: 3vh;
+  position: relative;
+  margin-bottom:2vh;
+  bottom: 3vh;
   width: 80vw;
   padding: 1.7vh 3.4vh;
   border-radius: 15px;
@@ -570,5 +575,58 @@ margin-bottom:.3vh;
   font-weight: 700;
   pointer-events: none;
 }
+
+#cart-order-success-popup {
+  z-index: 1000000000000000000;
+  width:90%;
+  height:30vh;
+  background-color: #ECECEC;
+  position: fixed;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  border-radius: 15px;
+  display:none;
+}
+
+#cart-order-success-popup-overlay {
+  z-index: 1000000;
+  width:100%;
+  height:100%;
+  background-color: #1c1413cd;
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  display:none;
+}
+#cart-order-success-popup h3 {
+font-size:clamp(1.1rem, 2.7vh, 1.4rem);
+text-align: center;
+margin-bottom:4.5vh;
+line-height: 3.6vh;
+}
+.success-order-table-style {
+  color:#cf3800;
+}
+
+#cart-order-success-popup button {
+  font-size:clamp(.9rem, 2.7vh, 1.1rem);
+  text-align: center;
+  width:40vw;
+  align-self: center;
+  background:none;
+  border:none;
+  width: 50vw;
+  padding: 1.5vh 2.4vh;
+  border-radius: 15px;
+  background-color: #9F502E;
+  color: white;
+  }
+
 
 /*# sourceMappingURL=stylesSass.css.map */

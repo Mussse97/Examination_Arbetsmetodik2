@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +8,7 @@
 }
 
 body {
-  background-image: url(/public/background.jpg);
+  background-image: url("../public/background.jpg");
   background-size: contain;
 }
 body .rating {
@@ -74,6 +75,11 @@ body .rating .foodRate {
   font-size: clamp(30px, 4.4vh, 40px);
   font-weight: 100;
 }
+.fas.fa-star {
+  margin-top:2vh;
+  font-size: clamp(17px, 2.5vh, 23px);
+}
+
 body .rating .foodRate .food {
   font-weight: 300;
   font-size: clamp(1.1rem, 2.5vh, 1.3rem);
