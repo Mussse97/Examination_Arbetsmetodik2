@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+
 * {
   margin: 0;
   padding: 0;
@@ -74,6 +75,11 @@ body .rating .foodRate {
   font-size: clamp(30px, 4.4vh, 40px);
   font-weight: 100;
 }
+.fas.fa-star {
+  margin-top:1.5vh;
+  font-size: clamp(15px, 4vh, 29px);
+}
+
 body .rating .foodRate .food {
   font-weight: 300;
   font-size: clamp(1.1rem, 2.5vh, 1.3rem);
