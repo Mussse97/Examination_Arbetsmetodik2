@@ -76,8 +76,8 @@ body .rating .foodRate {
   font-weight: 100;
 }
 .fas.fa-star {
-  margin-top:1.5vh;
-  font-size: clamp(15px, 4vh, 29px);
+  margin-top:2vh;
+  font-size: clamp(17px, 2.5vh, 23px);
 }
 
 body .rating .foodRate .food {
