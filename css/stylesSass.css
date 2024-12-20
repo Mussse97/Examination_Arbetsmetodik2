@@ -15,7 +15,7 @@ body {
 }
 
 .bg-image {
-  background-image: url("/public/taverna.2.webp");
+  background-image: url("../public/taverna.2.webp");
   filter: blur(20px) saturate(115%);
   -webkit-filter: blur(20px) saturate(115%);
   z-index:-100;
